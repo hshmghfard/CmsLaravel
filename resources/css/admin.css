@@ -1,0 +1,392 @@
+*
+{
+    margin:0px;
+    padding:0px;
+}
+body
+{
+    background:#f0f0f0;
+    direction:rtl;
+    font-family:Yekan;
+    font-size:16px;
+}
+@font-face
+{
+    font-family:'Yekan';
+    src: url('../font/yekan.eot?#iefix') format('embedded-opentype'),
+    url('../font/yekan.woff') format('woff'),url('../font/yekan.ttf') format('truetype');
+}
+#login
+{
+    width:380px;
+    height:300px;
+    background:white;
+    margin:200px auto;
+    border-radius:5px;
+   
+}
+
+#menu
+{
+    width:200px;
+    height:100%;
+    background-image:url(../images/menu.png);
+    position:fixed;
+    top:0;
+    right:0;
+    overflow:hidden;
+    z-index:1;
+
+}
+#li-menu
+{
+    color:white;
+    margin-top:90px;
+    list-style:none;
+    cursor:pointer;
+}
+#li-menu li
+{
+    float:right;
+    width:100%;
+    padding-top:20px;
+}
+a
+{
+    text-decoration:none;
+    color:white;
+}
+#li-menu li ul
+{
+    list-style:none;
+    display:none;
+}
+#li-menu li ul li
+{
+    padding-top:10px;
+    padding-right:20px;
+}
+.box1
+{
+    width:80%;
+    margin-top:80px;
+    background:white;
+    border-radius:5px;
+    margin:100px auto;
+}
+#tbl_product
+{
+    width:92%;
+    margin:30px auto;
+    text-align:center;
+    font-family:Yekan;
+    font-size:13px;
+    padding-bottom:20px;
+}
+#tbl_product tr td
+{
+    height:40px;
+    font-size:17px;
+
+}
+#tbl_product tr td a
+{
+    text-decoration:none;
+    color:black;
+}
+.page
+{
+    width:30px;
+    height:30px;
+    float:right;
+    border-radius:4px;
+    text-align:center;
+    line-height:30px;
+    background-color:#15e31e;
+    margin-right:7px;
+    margin-top:20px;
+    color:#000000;
+    margin-bottom:15px;
+}
+label
+{
+    width:87.5px;
+    display: inline-block;
+    padding-right:25px;
+}
+.inputfiled
+{
+    width:76%;
+    height:25px;
+    margin-top:20px;
+    margin-right:45px;
+    border:1px solid #d8d5d5;
+    font-size:17px;
+    font-family:Yekan;
+}
+.dropDownList
+{
+    font-family:Yekan;
+    font-size:17px;
+    width:150px;
+    border:1px solid #d8d5d5;
+    margin-right:10px;
+    margin-top:20px;
+}
+.btn
+{
+    width:80px;
+    height:30px;
+    background:#f0c53c;
+    font-family:Yekan;
+    border:1px solid #f0c53c;
+    margin-bottom:15px;
+    color:#ffffff;
+    font-size:16px;
+    margin-top:20px;
+    margin-right:80%;
+    border-radius:0px;
+    line-height:15px;
+}
+#message
+{
+    float:right;
+    width:500px;
+    height:30px;
+    margin-right:60px;
+    margin-top:20px;
+    color:red;
+}
+
+#load
+{
+    position:fixed;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,.8);
+    z-index: 100;
+    top: 0;left: 0;
+    display:none;
+}
+#loader
+{
+    width:150px;
+    height:60px;
+    text-align:center;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    margin:auto;
+    font-size:16px;
+    z-index:10;
+    color:#FFF;
+    opacity:0.8;
+    display:none;
+}
+#message_error
+{
+    width:600px;
+    height:100px;
+    text-align:center;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    margin:auto;
+    font-size:16px;
+    z-index:10;
+    color:black;
+    background:white;
+    display:none;
+    border-radius:5px;
+}
+#close_msg
+{
+    font-size: 22px;
+    line-height: 0.5;
+    position: absolute;
+    top: 8px;
+    right: 11px;
+    color: rgb(170, 170, 170);
+    font-weight: bold;
+    cursor: pointer;
+}
+#msg_box
+{
+    width:550px;
+    height:135px;
+    margin:200px auto;
+    font-size:16px;
+    color:black;
+    background:white;
+    display:none;
+    border-radius:5px;
+}
+#close
+{
+    font-size: 25px;
+    line-height: 0.5;
+    color: rgb(170, 170, 170);
+    font-weight: bold;
+    cursor: pointer;
+    padding-top:15px;
+    padding-right:10px;
+}
+a :hover
+{
+    color:#ffffff;
+}
+.form-control
+{
+    border-radius:0px;
+    width:700px;
+    margin-right:150px;
+}
+.control-label
+{
+    float:right;
+    margin-top:5px;
+}
+.has-success .form-control
+{
+    border: 1px solid #CCC;
+}
+.product_btn
+{
+    padding-right:10px;
+    padding-left:10px;
+    padding-top:1px;
+    padding-bottom:2px;
+    background:#f0c53c;
+    font-family:Yekan;
+    border:1px solid #f0c53c;
+    margin-bottom:15px;
+    color:#ffffff;
+    font-size:16px;
+    margin-top:10px;
+    margin-right:20px;
+    border-radius:0px;
+    text-align:center;
+    cursor:pointer;
+}
+.help-block
+{
+    padding-right:25px;
+}
+#product-file
+{
+    margin-right:150px;
+    text-align:center;
+    direction:ltr;
+}
+img
+{
+    max-width:400px;
+}
+.pagination li
+{
+    float:right;
+}
+.pagination
+{
+    margin-right:45px;
+}
+#user_order
+{
+    width:85%;
+    margin:30px auto;
+    font-family:Yekan;
+}
+#user_order tr td
+{
+    padding-top:5px;
+}
+#tbl_order
+{
+    width:90%;
+    margin:10px auto;
+    text-align:center;
+    font-family:Yekan;
+}
+#tbl_order tr th
+{
+    background:#48adff;
+    padding-top:5px;
+    padding-bottom:5px;
+    text-align:center;
+}
+#tbl_order tr td
+{
+    padding-top:10px;
+
+}
+#tbl_order tr td a
+{
+    text-decoration:none;
+    color:black;
+}
+#tbl_setting
+{
+    margin-right:50px;
+}
+#tbl_setting td
+{
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+#login label
+{
+    margin-top:20px;
+    font-family:Yekan;
+    font-weight:normal;
+    width:100px;
+}
+
+#login .help-block
+{
+
+    padding-right:30px;
+}
+#login .control-label
+{
+    color:#000000;
+}
+.li-children
+{
+    list-style: none;
+    padding-right:10px;
+}
+.li-menu
+{
+    list-style: none;
+}
+#tbl_setting
+{
+    padding-top:30px;
+
+}
+#tbl_setting tr td
+{
+    padding-right:10px;
+    padding-top:8px;
+}
+#tbl_discounts
+{
+    width:90%;
+    margin:20px auto;
+   border:1px solid #48adff;
+}
+#tbl_discounts tr th
+{
+    border-bottom:1px solid #48adff
+}
+#tbl_discounts tr td
+{
+    text-align:center;
+    padding-top:5px;
+    
+}
