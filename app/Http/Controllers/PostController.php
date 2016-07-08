@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\PostRequest;
 use App\TblPost;
+use App\TagsModel;
+use App\TagsAndPostModel;
 use App\TblPostCategory;
 use Auth;
 
@@ -56,21 +58,21 @@ class PostController extends Controller
     public function store(PostRequest $request)
     {
 
-        $Post=new TblPost($request->all());
-       $title=str_replace('-','', $Post->post_title);
-       $Post->post_url=preg_replace('/\s+/','-',$title);
-       $Post->post_date=time();
-       $Post->post_lastedit=time();
-       $Post->post_state='0';
-       $Post->post_commentstate='0';
-       $Post->post_countview=0;
+      $Post=new TblPost($request->all());
+      $title=str_replace('-','', $Post->post_title);
+      $Post->post_url=preg_replace('/\s+/','-',$title);
+      $Post->post_date=time();
+      $Post->post_lastedit=time();
+      $Post->post_state='0';
+      $Post->post_commentstate='0';
+      $Post->post_countview=0;
        
-       $Post->user=Auth::User()->id;
+      $Post->user=Auth::User()->id;
 
 
 
-       if($request->hasfile('post_img'))
-       {
+      if($request->hasfile('post_img'))
+      {
           $FileName=time().'.'.$request->file('post_img')->getClientOriginalExtension();
 
           if($request->file('post_img')->move('resources/upload/post_img',$FileName))
@@ -78,27 +80,46 @@ class PostController extends Controller
             $Post->post_img=$FileName;
           }
 
-       }
+      }
 
       if($Post->save())
       { 
 
-         if($request->has('cat'))
-         {
+        if($request->has('cat'))
+        {
             foreach ($request->get('cat') as $key => $value) 
             {
                 $Menu_Post=TblPostCategory::create(['post_id'=> $Post->id,'category_id'=>$value]);
             }
-         }
-          
-           $url='/admin';
-           return redirect($url);
-      }
-      else
-      {
+        }
+
+        if($request->has('tag'))
+        {
+              $array=array();
+
+              $array=explode(',',$request->tag);
+
+              for( $i=0; $i<sizeof($array); $i++ )
+              {
+
+                $searchtag=TagsModel::where('tags_name',$array[$i])->first()['id'];
+                if($searchtag)
+                {
+                  $tagpost=TagsAndPostModel::create(['id_post'=>$Post->id,'id_tag'=>$searchtag]);
+                }
+                else
+                {
+                  $tag=TagsModel::create(['tags_name'=> $array[$i]]); 
+                  $tagpost=TagsAndPostModel::create(['id_post'=>$Post->id,'id_tag'=>$tag->id]);
+                }
+                
+              }
+        }
+            
+        $url='/admin/post';
+        return redirect($url);
 
       }
-
         //
     }
 

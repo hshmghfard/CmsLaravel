@@ -24,4 +24,25 @@ class TestController extends Controller
     		$message->to('ghanbarifard_hashem@yahoo.com')->cc('ghanbarifard_hashem@yahoo.com');	
 		});
     }
+
+    public function save(Request $request){
+
+        if($request->has('tag')){
+
+            $array=array();
+
+            $array=explode(',',$request->tag);
+
+            for( $i=0; $i<sizeof($array); $i++ )
+            {
+                var_dump($array[$i]);
+            }
+
+        }
+
+    }
+
+    public function show(){
+        return View('test');
+    }
 }

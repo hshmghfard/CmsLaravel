@@ -110,6 +110,15 @@ foreach ($Category as $cat)
 
 </ul></div>
 
+
+<div class="form-input">
+{!! Form::label('tag','برچسب ها') !!}
+{!! Form::textarea('tag',null,['class'=>'inputfiled']) !!}
+</div>
+<p style="margin-right:150px;margin-top:-50px;">برچسب های خود را با استفاده از (<span style="color:red;font-size:60px;">,</span>) جدا کنید.</p>
+
+
+
 <div class="form-input">
 	
 	{!! Form::submit('انتشار',['class'=>'btn','style'=>'margin-right:740px;'])!!}

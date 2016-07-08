@@ -1,6 +1,7 @@
 <?php
     use App\TblPostCategory;
     use App\TblCategory;
+    use App\lib\Jdf;
 ?>
 @extends('layouts.FirstPage')
 
@@ -30,7 +31,7 @@
             	foreach ($cat as $cat) {
             		# code... 
             ?>
-            	<a href="" rel="category tag"><?php echo $cat2 = get_category($cat['category_id']); ?></a> , 
+            	<a href="<?= url('/category/'.get_category($cat['category_id'])) ?>" rel="category tag"><?php echo $cat2 = get_category($cat['category_id']); ?></a> , 
 
             <?php
             } 
@@ -53,7 +54,7 @@
         <span class="detail col clock">
             <i class="icon icon-clock col"></i>
             <span>تاریخ ارسال</span><br>
-            {{ $Product->post_date }}    </span>
+            <?php $Jdf=new Jdf(); echo $Jdf->jdate('Y/n/j-H:i:s',$Product->post_date); ?>    </span>
         <span class="detail col admin">
             <i class="icon icon-admin col"></i>
             <span>ارسال شده توسط</span><br>
@@ -64,7 +65,7 @@
             {{ $Product->post_countview }} نفر بازدیدکننده
         </span>
     
-        <a target="_blank" class="post-more go-left" rel="bookmark" href="https://learnfiles.com/downloads/%d9%81%db%8c%d9%84%d9%85-%d8%a2%d9%85%d9%88%d8%b2%d8%b4-star-rating-%d8%af%d8%b1-php-%d8%a8%d9%87-%d8%b2%d8%a8%d8%a7%d9%86-%d9%81%d8%a7%d8%b1%d8%b3%db%8c/" title="فیلم آموزش Star Rating در PHP به زبان فارسی"><i class="icon icon-more col"></i> ادامه مطلب</a>
+        <a target="_blank" class="post-more go-left" rel="bookmark" href="<?= url('/content/'.$Product->post_url) ?>" title="{{ $Product->post_title }}"><i class="icon icon-more col"></i> ادامه مطلب</a>
     
     <div class="cm-count"><span class="row">{!! get_countcomment($Product->id) !!}</span> دیدگاه</div>
 </div>
@@ -102,7 +103,7 @@ function get_category2($id)
 
 function get_countcomment($id)
 {
-    $countco=TblComment::where('post_id',$id)->count();
+    $countco=TblComment::where(['post_id'=>$id,'comment_state'=>1])->count();
     return $countco;
 }
 

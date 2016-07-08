@@ -1,3 +1,6 @@
+<?php
+use App\lib\Jdf;
+?>
 @extends('layouts.FirstPage')
 
 @section('content')
@@ -52,7 +55,7 @@
 				<span class="detail col clock">
             		<i class="icon icon-clock col"></i>
 	            	<span>تاریخ ارسال</span><br>
-	            		{{ $Product->post_date }}    
+	            		<?php $Jdf=new Jdf(); echo $Jdf->jdate('Y/n/j-H:i:s',$Product->post_date); ?>    
 	            </span>
 			    <span class="detail col admin">
 			        <i class="icon icon-admin col"></i>
@@ -158,7 +161,7 @@
 		</div>
 
 		<?php 
-			$recomm=App\TblComment::where('comment_replay',$comment->comment_id)->get();
+			$recomm=App\TblComment::where(['comment_replay'=>$comment->id,'comment_state'=>1])->get();
 		?>
 
 			@foreach($recomm as $recomm) 
@@ -253,8 +256,14 @@
 			</div>
 			<h2>برچسب ها</h2>
 		</div>
-				
-				 <a href="https://learnfiles.com/tag/rating/" rel="tag">rating</a>, <a href="https://learnfiles.com/tag/star-rating/" rel="tag">star rating</a>, <a href="https://learnfiles.com/tag/%d8%a7%d9%85%d8%aa%db%8c%d8%a7%d8%b2-%d8%af%d9%87%db%8c/" rel="tag">امتیاز دهی</a>, <a href="https://learnfiles.com/tag/%d8%a7%d9%85%d8%aa%db%8c%d8%a7%d8%b2-%d8%af%d9%87%db%8c-%d8%b3%d8%aa%d8%a7%d8%b1%d9%87-%d8%a7%db%8c/" rel="tag">امتیاز دهی ستاره ای</a><br>		
+
+		<?php
+			$tags=get_tags($Product->id);
+		?>
+
+		@foreach($tags as $tags)
+			<a href="<?= url('/tag/'.get_tagname($tags->id_tag)) ?>" rel="tag">{!! get_tagname($tags->id_tag) !!}</a>,		
+		@endforeach
 	</div>
 
 
@@ -268,7 +277,22 @@ use App\TblComment;
 use App\User;
 use App\TblPostCategory;
 use App\TblCategory;
+use App\TagsModel;
+use App\TagsAndPostModel;
 
+
+
+function get_tags($id)
+{
+	$tags=TagsAndPostModel::where('id_post',$id)->get();
+	return $tags;
+}
+
+function get_tagname($id)
+{
+	$name=TagsModel::find($id);
+	return $name['tags_name'];
+}
 
 function get_category($id)
 {

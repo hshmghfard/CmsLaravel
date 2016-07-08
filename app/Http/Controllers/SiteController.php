@@ -4,8 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\TblPost;
+use DB;
 use App\TblComment;
+use App\TblCategory;
+use App\TblPostCategory;
 use App\Http\Requests;
+use App\TagsModel;
+use App\TagsAndPostModel;
 
 class SiteController extends Controller
 {
@@ -14,9 +19,27 @@ class SiteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($page=1)
     {
-        //
+        if($page!=0)
+       {
+         $skip=($page-1)*10;
+         $Product=DB::table('tbl_post')->orderBy('id','desc')->skip($skip)->take(10)->get();
+         if(!empty($Product))
+         {
+             $total=TblPost::count();
+             return View('index.IndexPage',['Products'=>$Product,'page'=>$page,'total'=>$total]);
+         }
+         else
+         {
+            
+            abort('404','برای درخواست شما باسخی یافت نشد');
+         } 
+         }
+         else
+         {
+            abort('404');
+         } 
     }
 
     /**
@@ -55,10 +78,69 @@ class SiteController extends Controller
     public function show2($title)
     {
         $Product=TblPost::where('post_url',$title)->first();
-        $Comment=TblComment::orderBy('comment_id','desc')->where(['post_id'=>$Product['id'],'comment_replay'=>0,'comment_state'=>1])->get();
+        $Comment=TblComment::orderBy('id','desc')->where(['post_id'=>$Product['id'],'comment_replay'=>0,'comment_state'=>1])->get();
         return View('index.single',['Product'=>$Product,'comment'=>$Comment]);
     }
 
+
+    public function ShowByCategory($cat,$page=1)
+    {
+
+
+        $category=TblCategory::where('category_name',$cat)->first()['id'];
+
+        if($category)
+        {
+
+            $skip=($page-1)*10;
+            $postcat=DB::table('tbl_post_category')->where('category_id',$category)->orderBy('post_id','desc')->skip($skip)->take(10)->get();
+
+            if(!empty($postcat))
+            {
+             
+                $array=array();
+                $i=0;
+                foreach ($postcat as $postcat) 
+                {
+                    $array[$i]=$postcat->post_id;
+                    $i++;
+                }
+                $Product=TblPost::orderBy('id','desc')->find($array);
+                $total=TblPostCategory::where('category_id',$category)->count();
+                return View('index.IndexPage',['Products'=>$Product,'page'=>$page,'total'=>$total]);
+
+            }
+        }
+    }
+
+
+    public function ShowByTag($tag,$page=1)
+    {
+        $tags=TagsModel::where('tags_name',$tag)->first()['id'];
+
+        if($tags)
+        {
+
+            $skip=($page-1)*10;
+            $postcat=DB::table('tbl_tags_post')->where('id_tag',$tags)->orderBy('id_post','desc')->skip($skip)->take(10)->get();
+
+            if(!empty($postcat))
+            {
+             
+                $array=array();
+                $i=0;
+                foreach ($postcat as $postcat) 
+                {
+                    $array[$i]=$postcat->id_post;
+                    $i++;
+                }
+                $Product=TblPost::orderBy('id','desc')->find($array);
+                $total=TagsAndPostModel::where('id_tag',$tags)->count();
+                return View('index.IndexPage',['Products'=>$Product,'page'=>$page,'total'=>$total]);
+
+            }
+        }
+    }
     /**
      * Show the form for editing the specified resource.
      *

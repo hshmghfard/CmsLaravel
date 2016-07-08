@@ -29,7 +29,7 @@
             <!--  notification start -->
             <ul class="nav top-menu">
                 <!-- settings start -->
-                <li class="dropdown">
+                <!-- <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <i class="icon-tasks"></i>
                         <span class="badge bg-success">6</span>
@@ -52,132 +52,11 @@
                                 </div>
                             </a>
                         </li>
-                        <li>
-                            <a href="#">
-                                <div class="task-info">
-                                    <div class="desc">بروزرسانی دیتابیس</div>
-                                    <div class="percent">60%</div>
-                                </div>
-                                <div class="progress progress-striped">
-                                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                        <span class="sr-only">60% Complete (warning)</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <div class="task-info">
-                                    <div class="desc">برنامه نویسی  IPhone</div>
-                                    <div class="percent">87%</div>
-                                </div>
-                                <div class="progress progress-striped">
-                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 87%">
-                                        <span class="sr-only">87% Complete</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <div class="task-info">
-                                    <div class="desc">برنامه موبایل</div>
-                                    <div class="percent">33%</div>
-                                </div>
-                                <div class="progress progress-striped">
-                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 33%">
-                                        <span class="sr-only">33% Complete (danger)</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <div class="task-info">
-                                    <div class="desc">پروفایل v1.3</div>
-                                    <div class="percent">45%</div>
-                                </div>
-                                <div class="progress progress-striped active">
-                                    <div class="progress-bar"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-                                        <span class="sr-only">45% Complete</span>
-                                    </div>
-                                </div>
-
-                            </a>
-                        </li>
                         <li class="external">
                             <a href="#">برنامه های بیشتر</a>
                         </li>
                     </ul>
-                </li>
-                <!-- settings end -->
-                <!-- inbox dropdown start-->
-                <!-- <li id="header_inbox_bar" class="dropdown">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <i class="icon-envelope-alt"></i>
-                        <span class="badge bg-important">5</span>
-                    </a>
-                    <ul class="dropdown-menu extended inbox">
-                        <div class="notify-arrow notify-arrow-red"></div>
-                        <li>
-                            <p class="red">شما 5 پیام جدید دارید</p>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="photo"><img alt="avatar" src="<?= asset('resources/img/avatar-mini.jpg'); ?>"></span>
-                                    <span class="subject">
-                                    <span class="from">سجاد باقرزاده</span>
-                                    <span class="time">همین حالا</span>
-                                    </span>
-                                    <span class="message">
-                                        سلام،متن پیام نمایشی جهت تست
-                                    </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="photo"><img alt="avatar" src="<?= asset('resources/img/avatar-mini2.jpg'); ?>"></span>
-                                    <span class="subject">
-                                    <span class="from">ایمان مدائنی</span>
-                                    <span class="time">10 دقیقه قبل</span>
-                                    </span>
-                                    <span class="message">
-                                     سلام، چطوری شما؟
-                                    </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="photo"><img alt="avatar" src="<?= asset('resources/img/avatar-mini3.jpg'); ?>"></span>
-                                    <span class="subject">
-                                    <span class="from">صبا ذاکر</span>
-                                    <span class="time">3 ساعت قبل</span>
-                                    </span>
-                                    <span class="message">
-                                        چه پنل مدیریتی فوق العاده ایی
-                                    </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="photo"><img alt="avatar" src="<?= asset('resources/img/avatar-mini4.jpg'); ?>"></span>
-                                    <span class="subject">
-                                    <span class="from">مسعود شریفی</span>
-                                    <span class="time">همین حالا</span>
-                                    </span>
-                                    <span class="message">
-                                        سلام،متن پیام نمایشی جهت تست
-                                    </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">نمایش تمامی پیام ها</a>
-                        </li>
-                    </ul>
                 </li> -->
-                <!-- inbox dropdown end -->
-                <!-- notification dropdown start-->
-
 
                 <li id="header_notification_bar" class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -188,18 +67,71 @@
                     <ul class="dropdown-menu extended notification">
                         <div class="notify-arrow notify-arrow-yellow"></div>
                         <li>
-                            <p class="yellow">شما {!! get_countcomment() !!} دیدگاه جدید دارید</p>
+                            <p class="yellow">شما {!! get_countcomment() !!} دیدگاه جدید تایید نشده دارید</p>
                         </li>
                         
+                        
+                        <?php
+
+                            $comment=get_comment();
+
+                        ?>
+                        @foreach ($comment as $comment) 
                         <li>
-                            <a href="#">
+                            <a href="<?= url('admin/comment/'.$comment['id'].'/edit') ?>">
                                 <span class="label label-info"><i class="icon-bullhorn"></i></span>
-                                برنامه پیام خطا دارد
+                                {!! $comment['comment_content'] !!}
                                 <!-- <span class="small italic">10 دقیقه قبل</span> -->
                             </a>
                         </li>
+                        @endforeach
+                        <li class="external">
+                            <a href="<?= url('admin/comment') ?>">نمایش دیدگاه ها</a>
+                        </li>
                     </ul>
                 </li>
+
+
+
+
+
+
+                <li id="header_notification_bar" class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+
+                        <i class="icon-bell-alt"></i>
+                        <span class="badge bg-warning">{!! get_countquestions() !!}</span>
+                    </a>
+                    <ul class="dropdown-menu extended notification">
+                        <div class="notify-arrow notify-arrow-yellow"></div>
+                        <li>
+                            <p class="yellow">شما {!! get_countquestions() !!} سوال جدید تایید نشده دارید</p>
+                        </li>
+                        
+                        
+                        <?php
+
+                            $questions=get_questions();
+
+                        ?>
+                        @foreach ($questions as $questions) 
+                        <li>
+                            <a href="<?= url('admin/question/'.$questions['id'].'/edit') ?>">
+                                <span class="label label-info"><i class="icon-bullhorn"></i></span>
+                                {!! get_catname($questions['qu_category']) !!}
+                                <!-- <span class="small italic">10 دقیقه قبل</span> -->
+                            </a>
+                        </li>
+                        @endforeach
+                        <li class="external">
+                            <a href="<?= url('admin/question') ?>">نمایش همه سوالات</a>
+                        </li>
+                    </ul>
+                </li>
+
+
+
+
 
 
 
@@ -287,18 +219,7 @@
                         <li><a class="" href="<?= url('admin/post') ?>">نمایش نوشته ها </a></li>
                     </ul>
                 </li>
-                {{--<li class="sub-menu">--}}
-                    {{--<a href="javascript:;" class="">--}}
-                        {{--<i class="icon-cogs"></i>--}}
-                        {{--<span>کامنت ها</span>--}}
-                        {{--<span class="arrow"></span>--}}
-                    {{--</a>--}}
-                    {{--<ul class="sub">--}}
-                        {{--<li><a class="" href="#">گرید</a></li>--}}
-                        {{--<li><a class="" href="#">تقویم</a></li>--}}
-                        {{--<li><a class="" href="#">چارت</a></li>--}}
-                    {{--</ul>--}}
-                {{--</li>--}}
+                
                 <li class="sub-menu">
                     <a href="javascript:;" class="">
                         <i class="icon-tasks"></i>
@@ -310,6 +231,7 @@
                         <li><a class="" href="<?= url('admin/category') ?>">نمایش دسته ها</a></li>
                     </ul>
                 </li>
+
                 <li class="sub-menu">
                     <a href="javascript:;" class="">
                         <i class="icon-th"></i>
@@ -321,6 +243,32 @@
                         <li><a class="" href="#"> نمایش کاربران</a></li>
                     </ul>
                 </li>
+
+                <li class="sub-menu">
+                    <a href="javascript:;" class="">
+                        <i class="icon-book"></i>
+                        <span>مدیریت دیدگاه ها</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub">
+                        <li><a class="" href="<?= url('admin/comment') ?>">نمایش دیدگاه ها</a></li>
+                    </ul>
+                </li>
+
+
+
+                <li class="sub-menu">
+                    <a href="javascript:;" class="">
+                        <i class="icon-tasks"></i>
+                        <span> مدیریت پرسش و پاسخ</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub">
+                        <li><a class="" href="<?= url('admin/question') ?>">نمایش</a></li>
+                    </ul>
+                </li>
+
+
                 <li>
                     <a class="" href="#">
                         <i class="icon-envelope"></i>
@@ -328,20 +276,7 @@
                         <span class="label label-danger pull-right mail-info">2</span>
                     </a>
                 </li>
-                {{--<li class="sub-menu">--}}
-                    {{--<a href="javascript:;" class="">--}}
-                        {{--<i class="icon-glass"></i>--}}
-                        {{--<span>عناصر اضافی</span>--}}
-                        {{--<span class="arrow"></span>--}}
-                    {{--</a>--}}
-                    {{--<ul class="sub">--}}
-                        {{--<li><a class="" href="#">صفحه خالی</a></li>--}}
-                        {{--<li><a class="" href="#">پروفایل</a></li>--}}
-                        {{--<li><a class="" href="#">فاکتور</a></li>--}}
-                        {{--<li><a class="" href="#">404 Error</a></li>--}}
-                        {{--<li><a class="" href="#">500 Error</a></li>--}}
-                    {{--</ul>--}}
-                {{--</li>--}}
+                
                 <li>
                     <a class="" href="#">
                         <i class="icon-user"></i>
@@ -357,53 +292,7 @@
     <section id="main-content">
         <section class="wrapper">
             <!--state overview start-->
-            <div class="row state-overview">
-                <div class="col-lg-3 col-sm-6">
-                    <section class="panel">
-                        <div class="symbol terques">
-                            <i class="icon-user"></i>
-                        </div>
-                        <div class="value">
-                            <h1>22</h1>
-                            <p>کاربر جدید</p>
-                        </div>
-                    </section>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <section class="panel">
-                        <div class="symbol red">
-                            <i class="icon-tags"></i>
-                        </div>
-                        <div class="value">
-                            <h1>140</h1>
-                            <p>فروش</p>
-                        </div>
-                    </section>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <section class="panel">
-                        <div class="symbol yellow">
-                            <i class="icon-shopping-cart"></i>
-                        </div>
-                        <div class="value">
-                            <h1>345</h1>
-                            <p>سفارش جدید</p>
-                        </div>
-                    </section>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <section class="panel">
-                        <div class="symbol blue">
-                            <i class="icon-bar-chart"></i>
-                        </div>
-                        <div class="value">
-                            <h1>34,500</h1>
-                            <p>سود خالص</p>
-                        </div>
-                    </section>
-                </div>
-            </div>
-
+            
 
             <div class="row">
                 <div class="panel panel-default panhashem">
@@ -442,11 +331,37 @@
 <?php
 
 use App\TblComment;
+use App\QustionModel;
+use App\FavoritsModel;
 
 function get_countcomment()
 {
     $countco=TblComment::where('comment_state','0')->count();
     return $countco;
+}
+
+function get_comment()
+{
+    $comment=TblComment::where('comment_state','0')->get();
+    return $comment;
+}
+
+function get_countquestions()
+{
+    $countqu=QustionModel::where('qu_state','0')->count();
+    return $countqu;
+}
+
+function get_questions()
+{
+    $Qustion=QustionModel::where('qu_state','0')->get();
+    return $Qustion;
+}
+
+function get_catname($id)
+{
+    $favo_name=FavoritsModel::where('id',$id)->first()['favo_name'];
+    return $favo_name;
 }
 
 ?>
