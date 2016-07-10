@@ -19,8 +19,24 @@ class PostController extends Controller
 
     public function __construct()
     {
-         $this->middleware('auth');   
+
+        if ( Auth::check() )
+        {
+            $roule = Auth::user()->roule;
+            $state = Auth::user()->state;
+
+            if( $roule == '0'){
+                return redirect('/user/panel')->send();   
+            }
+        }
+        else{
+
+            return redirect('login')->send();
+
+        }
+          // $this->middleware('auth'); 
     }
+
     
     /**
      * Display a listing of the resource.

@@ -23,15 +23,8 @@ class AdminController extends Controller
             $roule = Auth::user()->roule;
             $state = Auth::user()->state;
 
-            if( $state == 'block'){
-                return redirect('/logout')->send();   
-            }
-            else
-            {
-                if ( $roule == '0')
-                {
-                    return redirect('/user/panel')->send();   
-                }
+            if( $roule == '0'){
+                return redirect('/user/panel')->send();   
             }
         }
         else{
@@ -41,6 +34,7 @@ class AdminController extends Controller
         }
           // $this->middleware('auth'); 
     }
+
 
     /**
      * Display a listing of the resource.

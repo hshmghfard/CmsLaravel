@@ -10,6 +10,27 @@ use App\Http\Requests\LearningRequest;
 
 class RequestLearning extends Controller
 {
+
+    public function __construct()
+    {
+
+        if ( Auth::check() )
+        {
+            $roule = Auth::user()->roule;
+            $state = Auth::user()->state;
+
+            if( $roule == '1'){
+                return redirect('/admin')->send();   
+            }
+        }
+        else{
+
+            return redirect('login')->send();
+
+        }
+          // $this->middleware('auth'); 
+    }
+
     /**
      * Display a listing of the resource.
      *

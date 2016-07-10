@@ -9,6 +9,29 @@ use Auth;
 
 class AdminAnsewerController extends Controller
 {
+
+    public function __construct()
+    {
+
+        if ( Auth::check() )
+        {
+            $roule = Auth::user()->roule;
+            $state = Auth::user()->state;
+
+            if( $roule == '0'){
+                return redirect('/user/panel')->send();   
+            }
+        }
+        else{
+
+            return redirect('login')->send();
+
+        }
+          // $this->middleware('auth'); 
+    }
+
+
+
     /**
      * Display a listing of the resource.
      *
