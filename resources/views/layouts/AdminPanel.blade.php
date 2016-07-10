@@ -133,6 +133,43 @@
 
 
 
+                <li id="header_notification_bar" class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+
+                        <i class="icon-bell-alt"></i>
+                        <span class="badge bg-warning">{!! get_countrequest() !!}</span>
+                    </a>
+                    <ul class="dropdown-menu extended notification">
+                        <div class="notify-arrow notify-arrow-yellow"></div>
+                        <li>
+                            <p class="yellow">شما {!! get_countrequest() !!} درخواست جدید تایید نشده دارید</p>
+                        </li>
+                        
+                        
+                        <?php
+
+                            $requests=get_request();
+
+                        ?>
+                        @foreach ($requests as $requests) 
+                        <li>
+                            <a href="<?= url('admin/request/'.$requests['id'].'/edit') ?>">
+                                <span class="label label-info"><i class="icon-bullhorn"></i></span>
+                                {{ $requests['request_title'] }}
+                                <!-- <span class="small italic">10 دقیقه قبل</span> -->
+                            </a>
+                        </li>
+                        @endforeach
+                        <li class="external">
+                            <a href="<?= url('admin/request') ?>">نمایش همه درخواست ها</a>
+                        </li>
+                    </ul>
+                </li>
+
+
+
+
+
 
 
 
@@ -268,6 +305,16 @@
                     </ul>
                 </li>
 
+                <li class="sub-menu">
+                    <a href="javascript:;" class="">
+                        <i class="icon-th"></i>
+                        <span>مدیریت درخواست ها</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub">
+                        <li><a class="" href="<?= url('admin/request') ?>"> نمایش درخواست ها </a></li>
+                    </ul>
+                </li>
 
                 <li>
                     <a class="" href="#">
@@ -278,7 +325,7 @@
                 </li>
                 
                 <li>
-                    <a class="" href="#">
+                    <a class="" href="<?= url('/') ?>" target="_black">
                         <i class="icon-user"></i>
                         <span>صفحه ورود به سایت</span>
                     </a>
@@ -333,6 +380,7 @@
 use App\TblComment;
 use App\QustionModel;
 use App\FavoritsModel;
+use App\TblRequestLearning;
 
 function get_countcomment()
 {
@@ -362,6 +410,18 @@ function get_catname($id)
 {
     $favo_name=FavoritsModel::where('id',$id)->first()['favo_name'];
     return $favo_name;
+}
+
+function get_request()
+{
+    $requestall=TblRequestLearning::where('request_state','0')->orderBy('id','desc')->get();
+    return $requestall;
+}
+
+function get_countrequest()
+{
+    $countrequest=TblRequestLearning::where('request_state','0')->count();
+    return $countrequest;
 }
 
 ?>

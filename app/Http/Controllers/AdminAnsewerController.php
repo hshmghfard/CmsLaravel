@@ -3,27 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\QustionModel;
 use App\AnsewerModel;
 use App\Http\Requests;
+use Auth;
 
-class AdminQuestionController extends Controller
+class AdminAnsewerController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($page=1)
+    public function index()
     {
-        if($page==0)
-        {
-          return redirect('admin/question');
-        }
-        $skip=($page-1)*10;
-        $model=QustionModel::orderby('id','desc')->paginate('10');
-        $total=QustionModel::count();
-        return View('admin.questions.index',['model'=>$model,'page'=>$page,'total'=>$total]);
+        //
     }
 
     /**
@@ -44,7 +37,14 @@ class AdminQuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ansewer=new AnsewerModel($request->all());
+        $ansewer->id_user=Auth::User()->id;
+        $ansewer->ansewer_date=time();
+        $ansewer->ansewer_state='1';
+    
+        $ansewer->save();
+
+        return redirect('admin/question/'.$ansewer->id_question.'/edit');
     }
 
     /**
@@ -66,11 +66,8 @@ class AdminQuestionController extends Controller
      */
     public function edit($id)
     {
-        $model2=AnsewerModel::where('id_question',$id)->orderby('id','desc')->paginate('10');
-        $total=AnsewerModel::count();
-
-        $model=QustionModel::find($id);
-        return View('admin.questions.okQuestions',['model'=>$model,'model2'=>$model2,'total'=>$total]);
+        $model=AnsewerModel::find($id);
+        return View('admin.questions.okQuestionsUser',['model'=>$model]);
     }
 
     /**
@@ -82,11 +79,11 @@ class AdminQuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $question=QustionModel::find($id);
-        $question->qu_state='1';
+        $ansewer=AnsewerModel::find($id);
+        $ansewer->ansewer_state='1';
 
-        $question->update($request->all());
-        $url='admin/question';
+        $ansewer->update($request->all());
+        $url='admin/question/'.$ansewer->id_question.'/edit';
         return redirect($url);
     }
 
@@ -98,7 +95,6 @@ class AdminQuestionController extends Controller
      */
     public function destroy($id)
     {
-        $question=QustionModel::where('id',$id)->delete();
-        return redirect('admin/question');
+        //
     }
 }
