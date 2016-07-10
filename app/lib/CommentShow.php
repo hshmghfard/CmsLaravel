@@ -61,6 +61,15 @@ class CommentShow{
                 		echo '<td>'.$comment['comment_content'].'</td>'; 
                 	}
                 }
+
+                elseif($array2[$i]=='post_date'){
+                  echo '<td>'.$Jdf->jdate('Y/n/j-H:i:s',$model->$array2[$i]).'</td>'; 
+                }
+
+                elseif($array2[$i]=='user'){
+                  $post=User::where('id',$model->$array2[$i])->first();
+                  echo '<td>'.$post['name'].'</td>'; 
+                }
                 elseif ($array2[$i]=='post_id') {
 
                 	$post=TblPost::where('id',$model->$array2[$i])->first();

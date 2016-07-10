@@ -10,7 +10,6 @@
             <div style="width:95%;height:3px;background:#48adff;margin:auto;margin-bottom:30px;"></div>
 
 
-
 <?php
 	$array1=array('ردیف','نام','ایمیل','محتویات','روی نوشته','روی نظر','در تاریخ','وضعیت','عملیات');
 	$array2=array('-','comment_flname','comment_email','comment_content','post_id','comment_replay','comment_date','comment_state');

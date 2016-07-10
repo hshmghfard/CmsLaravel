@@ -21,7 +21,7 @@ class CategoryController extends Controller
         {
           return redirect('admin/post');
         }
-        $model=TblCategory::orderby('id','desc')->get();
+        $model=TblCategory::orderby('id','desc')->paginate('10');
         $total=TblCategory::count();
         return View('category.index',['model'=>$model,'page'=>$page,'total'=>$total]);
     }

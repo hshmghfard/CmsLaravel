@@ -34,7 +34,7 @@ class PostController extends Controller
           return redirect('admin/post');
         }
         $skip=($page-1)*4;
-        $model=TblPost::orderBy('id','desc')->skip($skip)->take(4)->get();
+        $model=TblPost::orderBy('id','desc')->paginate('10');
         $total=TblPost::count();
         return View('post.index',['model'=>$model,'page'=>$page,'total'=>$total]);
     }
@@ -144,6 +144,13 @@ class PostController extends Controller
     {
 
       $model=TblPost::find($id);
+      // $tags=TagsAndPostModel::where('id_post',$id)->get();
+      // $stringa='';
+      // foreach ($tags as $tags) {
+      //   $tag=TagsModel::where('id',$tags['id_tag'])->first()['tags_name'];
+      //   $stringa=$stringa.','.$tag;
+      // }
+
       return View('post.edit',['model'=>$model]);
         //
     }
@@ -181,15 +188,49 @@ class PostController extends Controller
 
          if($Post->update($request->all()))
          {
+
+
+
            $delete=TblPostCategory::where('post_id',$id)->delete();
            foreach ($request->get('cat') as $key => $value) 
            {
               $Menu_Post=TblPostCategory::create(['post_id'=>$id,'category_id'=>$value]);
            }
+
+
+
+
+           $tagspost=TagsAndPostModel::where('id_post',$id)->delete();
+
+          if($request->has('tag'))
+          {
+            $array=array();
+
+            $array=explode(',',$request->tag);
+
+            for( $i=0; $i<sizeof($array); $i++ )
+            {
+
+              $searchtag=TagsModel::where('tags_name',$array[$i])->first()['id'];
+              if($searchtag)
+              {
+                $tagpost=TagsAndPostModel::create(['id_post'=>$Post->id,'id_tag'=>$searchtag]);
+              }
+              else
+              {
+                $tag=TagsModel::create(['tags_name'=> $array[$i]]); 
+                $tagpost=TagsAndPostModel::create(['id_post'=>$Post->id,'id_tag'=>$tag->id]);
+              }
+                
+            }
+          }  
+
+
+
          }
 
         
-         $url='admin/post/'.$id.'/edit';
+         $url='admin/post/';
          return redirect($url);
           
         //

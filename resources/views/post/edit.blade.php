@@ -99,6 +99,14 @@ use App\TblCategory;
 	</ul>
 	</div>
 
+	
+	<div class="form-input">
+		{!! Form::label('tag','برچسب ها') !!}
+		{!! Form::textarea('tag',null,['class'=>'inputfiled']) !!}
+	</div>
+	<p style="margin-right:150px;margin-top:-50px;">برچسب های خود را با استفاده از (<span style="color:red;font-size:60px;">,</span>) جدا کنید.</p>
+
+
 	<?php 
 
 	 if(!empty($model->post_img))
@@ -111,6 +119,7 @@ use App\TblCategory;
 	 }
 
 	?>
+
 		<div class="form-input">
 			
 			{!! Form::submit('ویرایش',['class'=>'btn','style'=>'margin-right:740px;'])!!}
@@ -141,3 +150,4 @@ use App\TblCategory;
 	document.getElementById('menu_box_1').style.background='red';
 </script>
 @endsection
+

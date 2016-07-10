@@ -15,6 +15,7 @@
 	$GridView=GridView::view($array1,$array2,$model,$page,$total,$ntable='category');
 ?>
 
+{!! $model->render() !!}
 
 @endsection
 

@@ -81,6 +81,7 @@ class GridView
           }
           echo '<td>';
 
+          
                     if( $ntable != 'request' )
                     {
                       $url= asset('/admin/'.$ntable.'/'.$model['id'].'/edit');  
