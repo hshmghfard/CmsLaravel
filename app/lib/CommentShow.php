@@ -172,6 +172,30 @@ class CommentShow{
                   }
                 }
 
+                elseif($array2[$i]=='roule')
+                {
+                  if( $model->$array2[$i]!='1' )
+                  {
+                    echo '<td style="color:yellow;"> مشترک </td>';
+                  }
+                  else
+                  {
+                    echo '<td style="color:green;"> مدیر </td>'; 
+                  }
+                }
+
+                elseif($array2[$i]=='info')
+                {
+                  if( $model->$array2[$i]=='' )
+                  {
+                    echo '<td style="color:red;"> وارد نشده </td>'; 
+                  }
+                  else
+                  {
+                    echo '<td>'.$model->$array2[$i].'</td>'; 
+                  }
+                }
+
                 else
                 {
                   echo '<td>'.$model->$array2[$i].'</td>'; 

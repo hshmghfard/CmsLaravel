@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\User;
 use App\Http\Requests;
 
 class UserController extends Controller
 {
-
 
 
     public function __construct()
@@ -32,15 +32,23 @@ class UserController extends Controller
     }
 
 
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($page=1)
     {
-        return 'user';
+        if($page==0)
+        {
+          return redirect('admin/user');
+        }
+        
+        $skip=($page-1)*10;
+        // $model=TblComment::orderby('comment_id','desc')->skip($skip)->take(10)->get();
+        $model=User::orderby('id','desc')->paginate('10');
+        $total=User::count();
+        return View('admin.users.index',['model'=>$model,'page'=>$page,'total'=>$total]);
     }
 
     /**
@@ -50,7 +58,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return View('user.create');
+        $roul=['0'=>'مشترک','1'=>'مدیر'];
+        return View('admin.users.create',['roul'=>$roul]);
     }
 
     /**
@@ -61,7 +70,26 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user=new User($request->all());
+        $user->state='0';
+
+        if($request->hasfile('img'))
+        {
+            $FileName=time().'.'.$request->file('img')->getClientOriginalExtension();
+
+            if($request->file('img')->move('resources/img/',$FileName))
+            {
+                $user->img=$FileName;
+            }
+
+        }
+
+        if( $user->save() )
+        {
+            return redirect('/admin/user');
+        }
+
+        
     }
 
     /**

@@ -214,7 +214,7 @@
 
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <img alt="" src="{{ $userimg2 }}">
+                        <img style="width:30px;height:30px;" alt="" src="{{ $userimg2 }}">
                         <span class="username">
                         {{ $user }}
                         </span>
