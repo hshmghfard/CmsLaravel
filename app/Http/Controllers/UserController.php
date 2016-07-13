@@ -72,6 +72,7 @@ class UserController extends Controller
     {
         $user=new User($request->all());
         $user->state='0';
+        $user->password=bcrypt($request->password2);
 
         if($request->hasfile('img'))
         {
@@ -134,6 +135,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete=User::find($id)->delete();
+        return redirect('admin/user');
     }
 }

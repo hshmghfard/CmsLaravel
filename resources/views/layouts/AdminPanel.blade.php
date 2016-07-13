@@ -276,8 +276,8 @@
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub">
-                        <li><a class="" href="#"> ایجاد کاربر</a></li>
-                        <li><a class="" href="#"> نمایش کاربران</a></li>
+                        <li><a class="" href="<?= url('admin/user/create') ?>"> ایجاد کاربر</a></li>
+                        <li><a class="" href="<?= url('admin/user') ?>"> نمایش کاربران</a></li>
                     </ul>
                 </li>
 
