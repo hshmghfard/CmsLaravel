@@ -17,6 +17,10 @@ Route::get('/content/{title}','SiteController@show2');
 Route::get('/category/{cat}','SiteController@ShowByCategory');
 Route::get('/tag/{tag}','SiteController@ShowByTag');
 Route::get('/home', 'HomeController@index');
+Route::get('/learning','SiteController@learning');
+Route::get('/about','SiteController@about');
+Route::get('/callme','SiteController@call');
+Route::post('/callme','SiteController@save');
 Route::resource('comment','CommentController');
 
 

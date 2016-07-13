@@ -6,10 +6,7 @@
 @extends('layouts.FirstPage')
 
 
-
-
 @section('content')
-
 @foreach($Products as $Product) 
 
     <div class="box row">

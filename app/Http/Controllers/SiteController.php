@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\TblPost;
 use DB;
+use Auth;
 use App\TblComment;
 use App\TblCategory;
 use App\TblPostCategory;
 use App\Http\Requests;
 use App\TagsModel;
 use App\TagsAndPostModel;
+use App\CallModel;
 
 class SiteController extends Controller
 {
@@ -173,5 +175,41 @@ class SiteController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function call()
+    {
+        return View('index.callme');
+    }
+
+
+    public function save(Request $request)
+    {
+        $call = new CallModel($request->all());
+
+        $call->call_date = time();
+        $call->call_state = '0';
+
+        if($call->save())
+        {
+            return redirect('/');
+        }
+    }
+
+
+    public function about()
+    {
+        return View('index.about');
+    }
+
+    public function learning()
+    {
+        if ( Auth::check() )
+        {
+            return redirect('user/panel/request')->send();
+        }
+        else{
+            return redirect('user/panel/request')->send();
+        }
     }
 }

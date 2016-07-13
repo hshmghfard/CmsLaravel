@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\QustionModel;
 use App\AnsewerModel;
 use App\Http\Requests;
+use Auth;
 
 class AdminQuestionController extends Controller
 {
@@ -20,7 +21,7 @@ class AdminQuestionController extends Controller
             $roule = Auth::user()->roule;
             $state = Auth::user()->state;
 
-            if( $roule == '0'){
+            if( $roule != '1' ){
                 return redirect('/user/panel')->send();   
             }
         }

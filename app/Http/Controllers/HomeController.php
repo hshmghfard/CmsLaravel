@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\TblPost;
 use App\TblComment;
 use DB;
+use Auth;
 
 class HomeController extends Controller
 {

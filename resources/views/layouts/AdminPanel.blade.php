@@ -285,6 +285,12 @@
                     <a href="javascript:;" class="">
                         <i class="icon-book"></i>
                         <span>مدیریت دیدگاه ها</span>
+                        <?php
+                            $countcall = get_countcomment();
+                            if ( $countcall != 0 ){
+                        ?>
+                            <span style="color:red;">({!! get_countcomment() !!})</span>
+                        <?php } ?>
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub">
@@ -298,6 +304,12 @@
                     <a href="javascript:;" class="">
                         <i class="icon-tasks"></i>
                         <span> مدیریت پرسش و پاسخ</span>
+                        <?php
+                            $countcall = get_countquestions();
+                            if ( $countcall != 0 ){
+                        ?>
+                            <span style="color:red;">({!! get_countquestions() !!})</span>
+                        <?php } ?>
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub">
@@ -309,6 +321,12 @@
                     <a href="javascript:;" class="">
                         <i class="icon-th"></i>
                         <span>مدیریت درخواست ها</span>
+                        <?php
+                            $countcall = get_countrequest();
+                            if ( $countcall != 0 ){
+                        ?>
+                            <span style="color:red;">({!! get_countrequest() !!})</span>
+                        <?php } ?>
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub">
@@ -319,8 +337,20 @@
                 <li>
                     <a class="" href="#">
                         <i class="icon-envelope"></i>
-                        <span>ایمیل </span>
-                        <span class="label label-danger pull-right mail-info">2</span>
+                        <span>پیام های دریافتی</span>
+
+                        <?php
+                            $countcall = get_countcall();
+                            if ( $countcall != 0 )
+                            {?>
+                                <span class="label label-danger pull-right mail-info">{!! get_countcall() !!}</span>
+                            <?php } 
+                            else {
+                            ?>
+                                <span class="label label-danger pull-right mail-info"></span>
+                            <?php }
+                        ?>
+                        
                     </a>
                 </li>
                 
@@ -381,6 +411,14 @@ use App\TblComment;
 use App\QustionModel;
 use App\FavoritsModel;
 use App\TblRequestLearning;
+use App\CallModel;
+
+
+function get_countcall()
+{
+    $call=CallModel::where('call_state','0')->count();
+    return $call;
+}
 
 function get_countcomment()
 {

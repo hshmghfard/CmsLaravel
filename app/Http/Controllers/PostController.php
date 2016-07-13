@@ -25,7 +25,7 @@ class PostController extends Controller
             $roule = Auth::user()->roule;
             $state = Auth::user()->state;
 
-            if( $roule == '0'){
+            if( $roule != '1' ){
                 return redirect('/user/panel')->send();   
             }
         }

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>صفحه ورود و خروج کاربر</title>
 
     <!-- Fonts -->
     <link href="<?= asset('resources/css/css_first/font-awesome.min.css'); ?>" rel='stylesheet' type='text/css'>

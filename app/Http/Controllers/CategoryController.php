@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\TblCategory;
 use App\Http\Requests;
 use App\Http\Requests\CategoryRequest;
+use Auth;
 
 class CategoryController extends Controller
 {
@@ -19,7 +20,7 @@ class CategoryController extends Controller
             $roule = Auth::user()->roule;
             $state = Auth::user()->state;
 
-            if( $roule == '0'){
+            if( $roule != '1' ){
                 return redirect('/user/panel')->send();   
             }
         }
