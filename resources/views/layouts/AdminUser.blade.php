@@ -44,7 +44,7 @@
                     <span class="value">بخش پرسش و پاسخ</span>
                 </div>
                 <ul>
-                    <li><a href="/">نمایش سوالات کاربران</a></li>
+                    <li><a href="<?= url('user/panel/qustion') ?>">نمایش سوالات کاربران</a></li>
                     <li><a href="<?= url('user/panel/qustion/create'); ?>">ارسال سوال؟</a></li>
                 </ul>
             </li>
@@ -67,7 +67,7 @@
     <div class="content">
     
     
-    <ul data-collapse="collapse" class="quick">
+    <!-- <ul data-collapse="collapse" class="quick">
         <li>
             <a href="#">
                 <img alt="" src="<?= asset('resources/image/imguser/statistics.png'); ?>">
@@ -116,7 +116,7 @@
                 <span>خالی کردن کش</span>
             </a>
         </li>
-    </ul>
+    </ul> -->
     
 	
     @yield('content')

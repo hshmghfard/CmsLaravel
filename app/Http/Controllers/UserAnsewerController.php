@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\CallModel;
+use App\AnsewerModel;
 use App\Http\Requests;
 use Auth;
 
-class AdminCallController extends Controller
+class UserAnsewerController extends Controller
 {
+
+
 
 
     public function __construct()
@@ -17,9 +19,10 @@ class AdminCallController extends Controller
         if ( Auth::check() )
         {
             $roule = Auth::user()->roule;
+            $state = Auth::user()->state;
 
-            if( $roule != '1'){
-                return redirect('/user/panel')->send();   
+            if( $roule == '1'){
+                return redirect('/admin')->send();   
             }
         }
         else{
@@ -32,21 +35,15 @@ class AdminCallController extends Controller
 
 
 
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($page=1)
+    public function index()
     {
-        if($page==0)
-        {
-          return redirect('admin/call');
-        }
-        $skip=($page-1)*10;
-        $model=CallModel::orderby('id','desc')->paginate('10');
-        $total=CallModel::count();
-        return View('admin.call.index',['model'=>$model,'page'=>$page,'total'=>$total]);
+        //
     }
 
     /**
@@ -67,7 +64,14 @@ class AdminCallController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ansewer=new AnsewerModel($request->all());
+        $ansewer->id_user=Auth::User()->id;
+        $ansewer->ansewer_date=time();
+        $ansewer->ansewer_state='0';
+    
+        $ansewer->save();
+
+        return redirect('user/panel/qustion/'.$ansewer->id_question.'/edit');
     }
 
     /**
@@ -89,8 +93,7 @@ class AdminCallController extends Controller
      */
     public function edit($id)
     {
-        $model=CallModel::find($id);
-        return View('admin.call.edit',['model'=>$model]);
+        //
     }
 
     /**
@@ -102,12 +105,7 @@ class AdminCallController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $call=CallModel::find($id);
-        $call->call_state='1';
-
-        $call->update($request->all());
-        $url='admin/call';
-        return redirect($url);
+        //
     }
 
     /**
@@ -118,7 +116,6 @@ class AdminCallController extends Controller
      */
     public function destroy($id)
     {
-        $delete=CallModel::where('id',$id)->delete();
-        return redirect('admin/call');
+        //
     }
 }

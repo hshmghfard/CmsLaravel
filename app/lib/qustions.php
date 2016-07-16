@@ -7,10 +7,17 @@ use App\TblRequestLearning;
 use Session;
 use App\FavoritsModel;
 use App\User;
-class GridView
+use App\QustionModel;
+class qustions
 {
    public static function view($array1,$array2,$model,$update=true,$total,$ntable)
    {
+
+
+      if($ntable=='ansewer')
+      {
+        $update=false;
+      }
       if(isset($model[0]))
       {
          
@@ -93,6 +100,24 @@ class GridView
 
                 }
 
+                elseif($array2[$i]=='id_user')
+                {
+
+                  $post=User::where('id',$model->$array2[$i])->first();
+                  echo '<td>'.$post['name'].'</td>'; 
+
+                }
+
+                elseif ($array2[$i]=='id_question') {
+
+                  $qus=QustionModel::where('id',$model->$array2[$i])->first();
+                  echo '<td>'.$qus['qu_content'].'</td>'; 
+
+                }
+
+                elseif ($array2[$i]=='ansewer_date') {
+                  echo '<td>'.$Jdf->jdate('Y/n/j-H:i:s',$model->$array2[$i]).'</td>'; 
+                }
 
                 else
                 {
@@ -131,7 +156,7 @@ class GridView
           $route= asset('/user/panel/'.$ntable.'/'.$model['id']);  
           // url().'/admin/'.$model['table'].'/'.$model->id;
           ?>
-          <img src="<?= asset('resources/image/15.gif') ?>" onclick="del_row('<?= $route ?>')" />
+          
 
             
           </td>

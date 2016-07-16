@@ -9,21 +9,36 @@ use App\Http\Requests;
 
 class TestController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
 
-    	$data = array(
-		  'name' => 'hashem',
-		  'email' => 'ghanbarifard_hashem@yahoo.com',
-		  'context' => 'hashem ghanbarifard',
-		);
+
+        $data = array(
+          'name' => $request->user_name,
+          'email' => $request->user_email,
+          'context' => $request->ansewer,
+        );
  
-    	Mail::send('welcome', $data, function ($message) {
+        Mail::send('welcome', $data, function ($message) {
 
-    		$message->from('ghanbarifard.hashem@gmail.com', 'Laravel');
+            $message->from('ghanbarifard.hashem@gmail.com', 'سایت دانشجویان کامپیوتر');
 
-    		$message->to('ghanbarifard_hashem@yahoo.com')->cc('ghanbarifard_hashem@yahoo.com');	
-		});
+            $message->to($request->user_email)->cc($request->user_email); 
+        });
+
+
+  //   	$data = array(
+		//   'name' => 'hashem',
+		//   'email' => 'ghanbarifard_hashem@yahoo.com',
+		//   'context' => 'hashem ghanbarifard',
+		// );
+ 
+  //   	Mail::send('welcome', $data, function ($message) {
+
+  //   		$message->from('ghanbarifard.hashem@gmail.com', 'Laravel');
+
+  //   		$message->to('ghanbarifard_hashem@yahoo.com')->cc('ghanbarifard_hashem@yahoo.com');	
+		// });
     }
 
     public function save(Request $request){

@@ -33,6 +33,7 @@ Route::resource('user/panel/profile','ProFileController');
 Route::resource('user/panel/request','RequestLearning');
 Route::resource('user/panel/favorits','FavoritsController');
 Route::resource('user/panel/qustion', 'QustionController');
+Route::resource('user/panel/ansewer', 'UserAnsewerController');
 
 
 Route::get('/admin','AdminController@index');
@@ -49,6 +50,6 @@ Route::resource('admin/call','AdminCallController');
 
 
 
-Route::get('/send','TestController@index');
+Route::post('/send','TestController@index');
 Route::post('/test','TestController@save');
 Route::get('/test','TestController@show');

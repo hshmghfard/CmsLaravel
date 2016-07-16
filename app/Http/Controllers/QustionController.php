@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\QustionRequest;
 use App\Http\Requests;
+use App\AnsewerModel;
 use App\FavoritsModel;
 use App\QustionModel;
 use Auth;
@@ -40,9 +41,16 @@ class QustionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($page=1)
     {
-        //
+        if($page==0)
+        {
+          return redirect('admin/qustion');
+        }
+        $skip=($page-1)*10;
+        $model=QustionModel::where('qu_state','1')->orderby('id','desc')->paginate('10');
+        $total=QustionModel::count();
+        return View('user.qustions.index',['model'=>$model,'page'=>$page,'total'=>$total]);
     }
 
     /**
@@ -94,9 +102,20 @@ class QustionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id,$page=1)
     {
-        //
+
+        if($page==0)
+        {
+          return redirect('user/panel/qustion');
+        }
+        $skip=($page-1)*10;
+        $model2=AnsewerModel::where('ansewer_state','1')->orderby('id','desc')->paginate('10');
+        $total=AnsewerModel::where('ansewer_state','1')->count();
+
+
+        $model=QustionModel::find($id);
+        return View('user.qustions.show',['model'=>$model,'model2'=>$model2,'page'=>$page,'total'=>$total]);
     }
 
     /**
