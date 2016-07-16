@@ -44,6 +44,7 @@ Route::resource('admin/request','AdminRequestController');
 Route::resource('admin/category','CategoryController');
 Route::resource('admin/comment','AdminCommentController');
 Route::resource('admin/ansewer','AdminAnsewerController');
+Route::resource('admin/call','AdminCallController');
 
 
 

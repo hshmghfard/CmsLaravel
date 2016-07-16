@@ -335,7 +335,7 @@
                 </li>
 
                 <li>
-                    <a class="" href="#">
+                    <a class="" href="<?= url('admin/call') ?>">
                         <i class="icon-envelope"></i>
                         <span>پیام های دریافتی</span>
 

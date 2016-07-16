@@ -196,6 +196,25 @@ class CommentShow{
                   }
                 }
 
+                elseif ($array2[$i]=='call_date') {
+
+                  echo '<td>'.$Jdf->jdate('Y/n/j-H:i:s',$model->$array2[$i]).'</td>'; 
+
+                }
+
+                elseif ($array2[$i]=='call_state') {
+
+                  if($model->$array2[$i]=='0')
+                  {
+                    echo '<td style="color:red;background-color:yellow"> در حال انتظار </td>'; 
+                  }
+                  else
+                  {
+                    echo '<td style="color:#ffffff;background-color:green"> تایید </td>'; 
+                  }
+                  
+                }
+
                 else
                 {
                   echo '<td>'.$model->$array2[$i].'</td>'; 
