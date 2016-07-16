@@ -112,7 +112,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $model=User::find($id);
+        $roul=['0'=>'مشترک','1'=>'مدیر'];
+        return View('admin.users.edit',['model'=>$model,'roul'=>$roul]);
     }
 
     /**
@@ -124,7 +126,29 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user=User::find($id);
+
+        if($request->has('password2'))
+        {
+            $user->password=bcrypt($request->password2);
+        }
+
+        if($request->hasfile('img2'))
+        {
+            $FileName=time().'.'.$request->file('img2')->getClientOriginalExtension();
+
+            $user->img=$FileName;
+            $request->file('img2')->move('resources/img/',$FileName);
+
+        }
+
+        if( $user->update($request->all()) )
+        {
+            return redirect('/admin/user/'.$id.'/edit');
+        }
+
+
+
     }
 
     /**
