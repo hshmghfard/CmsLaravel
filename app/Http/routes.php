@@ -22,7 +22,10 @@ Route::get('/about','SiteController@about');
 Route::get('/callme','SiteController@call');
 Route::post('/callme','SiteController@save');
 Route::resource('comment','CommentController');
-
+Route::post('/add','SiteController@add');
+Route::get('/checkout','SiteController@checkout');
+Route::post('/empty','SiteController@empty_cart');
+Route::post('/remove_cart','SiteController@remove_cart');
 
 Route::auth();
 Route::get('page/{page}','SiteController@index')->where(['page'=>'[0-9]+']);

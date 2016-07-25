@@ -7,6 +7,7 @@ color:white;
 }
 </style>
 <meta charset="utf-8">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="<?= asset('resources/css/firstpage/style.css'); ?>" type="text/css">
 <link rel="stylesheet" href="<?= asset('resources/css/firstpage/custom.css'); ?>" type="text/css">
@@ -43,6 +44,7 @@ color:white;
 </head>
 
 <body>
+
 <header class="wrapper header">
     <div class="container inner-el" style="padding-right: 44px;">
         <div class="row head-top">
@@ -63,19 +65,8 @@ color:white;
             </ul>
             
             
-            <ul class="basket go-left" style="float:left;">
-                <li>
-                    <a href="#" title="">
-                    <i class="icon icon-basket col"><span>0</span></i>
-                    <span class="title">سبد خرید شما</span><br>
-                    محصولی موجود نمی باشد!      </a>
-        
-                    <ul class="basket-box">
-                        <li>
-                        سبد خرید شما خالی است
-                        </li>
-                </ul>
-                </li>
+            <ul class="basket go-left" id="cart" style="float:left;margin-left:80px;">
+                @include('index.cart')
             </ul>           
         
             
@@ -87,7 +78,8 @@ color:white;
 
 <form action="" method="POST">
     <input  id="cursor" type="text" name="s"  class="srchbox" value="" placeholder="  جستجو آموزش ... "/>
-    <button style="       line-height: 26px;
+    <button style="
+    line-height: 26px;
     width: 32px;
     height: 32px;
     outline:none;
@@ -278,6 +270,84 @@ color:white;
 </div>
 </footer>
 
+<?php 
+    $url=Url('/add');
+?>
+<script type="text/javascript">
+        add_product = function(id)
+        {
+            $.ajaxSetup({
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }});
+            $.ajax({
+                url:'<?= $url ?>',
+                type:"POST",
+                data:'product_id='+id,
+                success:function(data)
+                {
+                    // alert(data);
+                    $("#cart").html(data);
+                }
+            });
+        }
+</script>
+<?php $url2=Url('/empty'); ?>
+<script type="text/javascript">
+    empty_cart = function()
+    {
+        $.ajaxSetup({
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }});
+            $.ajax({
+                url:'<?= $url2 ?>',
+                type:"POST",
+                data:'empty=cart',
+                success:function(data)
+                {
+                    // alert(data);
+                    $("#cart").html(data);
+                }
+            });
+    }
+</script>
+
+
+<?php $url3=Url('/remove_cart'); ?>
+<script type="text/javascript">
+    delete_product = function(id)
+    {
+        $.ajaxSetup({
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }});
+            $.ajax({
+                url:'<?= $url3 ?>',
+                type:"POST",
+                data:'product_id='+id,
+                success:function(data)
+                {
+                    // alert(data);
+                    $("#cart").html(data);
+                }
+            });
+    }
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#hashem').click(function(){
+            $('.basket-box').css({"display":"block"});
+        });
+
+        $('.basket-box').mouseleave(function(){
+            $('.basket-box').css({"display":"none"});
+        });
+
+    });
+</script>
+@yield('Footer')
 
 </body>
 </html>

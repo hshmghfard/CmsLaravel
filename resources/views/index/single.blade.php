@@ -47,6 +47,40 @@ use App\lib\Jdf;
 							{!! $Product->post_content !!}
 					</div>	
 					<div class="clearfix"></div>
+
+
+
+
+
+
+					<div style="margin-bottom:90px;">
+						<?php
+
+							if(!empty($Product->post_price))
+							{
+								?>
+
+								<div>
+									<div style="padding: 10px;background:none repeat scroll 0% 0% #333;margin-top:20px;font-family:Tahoma;display: inline-table;color:#FFF;float:right;">{!! number_format($Product->post_price); !!} <span style="font-family:BYekan;"> ریال</span> </div>
+	            					<div onclick="add_product('<?= $Product->id; ?>');" style="width:150px;height:35px;background:#ffffff;color:black;border:1px solid #48ADFF;font-family:BYekan;margin-right:120px;text-align:center;line-height:35px;cursor:pointer;margin-top:40px;">افزودن به سبد خرید</div>
+
+	            				</div>
+
+            					
+
+								<?php
+							}
+
+						?>
+					</div>
+
+
+
+
+
+
+
+
 					
 				</div>
 
@@ -331,4 +365,6 @@ function get_user($id)
 
 @endsection
 
-	
+@section('Footer')
+
+@endsection

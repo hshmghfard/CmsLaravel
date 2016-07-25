@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\TblPost;
 use DB;
+use Session;
 use Auth;
 use App\TblComment;
 use App\TblCategory;
@@ -211,5 +212,88 @@ class SiteController extends Controller
         else{
             return redirect('user/panel/request')->send();
         }
+    }
+
+    public function add(Request $request)
+    {
+        if(session::has('cart'))
+        {
+          $cart=session::get('cart');
+          if(array_key_exists($request->product_id,$cart))
+          {
+            $cart[$request->product_id]++;
+          }
+          else
+          {
+             $cart[$request->product_id]=1;
+          }
+          session::put('cart',$cart);
+
+        }
+        else
+        {
+          $cart=array();
+          $cart[$request->product_id]=1;
+          session::put('cart',$cart);
+
+        }
+
+        return View('index.cart');
+    }
+
+    public function checkout()
+    {
+        return View('index.checkout');
+    }
+
+    public function empty_cart()
+    {
+        if(session::has('cart'))
+        {
+            Session::forget('cart');
+            Session::forget('total_price');
+        }
+        return View('index.cart'); 
+    }
+
+    public function remove_cart(Request $request)
+    {
+
+        $cart=session::get('cart');
+        Session::forget('cart');
+        $cart2=array();
+        foreach ($cart as $key => $value) {
+              
+            
+            if ($key!=$request->product_id) {
+                $cart2[$key]=$value;  
+            }
+            else
+            {
+                $count=$cart[$request->product_id] - 1;
+                if($count==0)
+                {
+                }
+                else
+                {
+                    $cart2[$request->product_id]=$count;
+                }
+            }
+
+        }
+        session::put('cart',$cart2);
+
+        // if($cart[$request->product_id]!=0)
+        // {
+        //     $cart[$request->product_id]--;
+        // }
+        // else
+        // {
+
+        // }
+        // session::put('cart',$cart);
+        Session::forget('total_price');
+        return View('index.cart');
+
     }
 }
