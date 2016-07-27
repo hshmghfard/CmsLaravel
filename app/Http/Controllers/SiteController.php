@@ -11,9 +11,11 @@ use App\TblComment;
 use App\TblCategory;
 use App\TblPostCategory;
 use App\Http\Requests;
+use App\Http\Requests\RequestBuyPost;
 use App\TagsModel;
 use App\TagsAndPostModel;
 use App\CallModel;
+use App\TblBuyPost;
 
 class SiteController extends Controller
 {
@@ -295,5 +297,28 @@ class SiteController extends Controller
         Session::forget('total_price');
         return View('index.cart');
 
+    }
+
+    public function buy_post()
+    {
+        if( Session::has('cart') )
+        {
+            return View('index.buy_post');
+        }
+        else
+        {
+            return redirect('/');
+        }
+    }
+
+    public function save_buypost(RequestBuyPost $request)
+    {
+        $buy = new TblBuyPost( $request->all() );
+        $buy->state=0;
+
+        if( $buy->save() )
+        {
+            return redirect('/');
+        }
     }
 }

@@ -26,6 +26,8 @@ Route::post('/add','SiteController@add');
 Route::get('/checkout','SiteController@checkout');
 Route::post('/empty','SiteController@empty_cart');
 Route::post('/remove_cart','SiteController@remove_cart');
+Route::get('/buy_post','SiteController@buy_post');
+Route::post('/buy_post','SiteController@save_buypost');
 
 Route::auth();
 Route::get('page/{page}','SiteController@index')->where(['page'=>'[0-9]+']);
