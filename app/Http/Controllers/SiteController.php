@@ -16,6 +16,7 @@ use App\TagsModel;
 use App\TagsAndPostModel;
 use App\CallModel;
 use App\TblBuyPost;
+use App\CountBuyModel;
 
 class SiteController extends Controller
 {
@@ -84,6 +85,10 @@ class SiteController extends Controller
     {
         $Product=TblPost::where('post_url',$title)->first();
         $Comment=TblComment::orderBy('id','desc')->where(['post_id'=>$Product['id'],'comment_replay'=>0,'comment_state'=>1])->get();
+
+        $count=$Product->post_countview + 1;
+        $up=DB::update('update tbl_post set post_countview=? where id=?',[$count,$Product->id]);
+
         return View('index.single',['Product'=>$Product,'comment'=>$Comment]);
     }
 
@@ -315,9 +320,21 @@ class SiteController extends Controller
     {
         $buy = new TblBuyPost( $request->all() );
         $buy->state=0;
+        $buy->date=time();
+        $buy->type_buy=1;
 
         if( $buy->save() )
         {
+
+            if( Session::has('cart') )
+            {
+                $cart=session::get('cart');
+                Session::forget('cart');
+                foreach ($cart as $key => $value) {
+                    $count=CountBuyModel::create(['id_buy'=> $buy->id,'id_product'=>$key,'count'=>$value,'type_buy'=>1,'state'=>0]);
+                }
+            }
+
             return redirect('/');
         }
     }

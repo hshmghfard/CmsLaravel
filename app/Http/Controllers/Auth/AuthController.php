@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Socialite;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -69,4 +70,29 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+
+
+//    public function redirectToProvider(){
+//        return Socialite::driver('GitHub')->redirect();
+//    }
+//
+//
+//    public function handleProviderCallback(){
+//        $user = Socialite::driver('github')->user();
+//
+//        var_dump($user);
+//    }
+
+
+   //  public function redirectToGoogle(){
+   //     return Socialite::driver('google')->redirect();
+   //  }
+
+   //  public function handleProviderCallbackGoogle(){
+   //     $user = Socialite::driver('google')->user();
+
+   //     var_dump($user);
+   // }
+    
 }

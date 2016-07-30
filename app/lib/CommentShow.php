@@ -62,6 +62,30 @@ class CommentShow{
                 	}
                 }
 
+                elseif( $array2[$i] == 'state' ){
+
+                    if($model->$array2[$i]== '0')
+                    {
+                        echo '<td style="color:white;background-color:red"> بررسی نشده </td>';
+                    }
+                    elseif( $model->$array2[$i] == '1' )
+                    {
+                        echo '<td style="color:white;background-color:orangered"> در حال انتظار برای تایید سفارش </td>';
+                    }
+                    elseif( $model->$array2[$i] == '2' )
+                    {
+                        echo '<td style="color:white;background-color:yellow"> تایید و در حال بسته بندی </td>';
+                    }
+                    elseif ( $model->$array2[$i] == '3' )
+                    {
+                        echo '<td style="color:white;background-color:green"> بسته بندی و ارسال گردید </td>';
+                    }
+                    else
+                    {
+                        echo '<td> ناشناخته </td>';
+                    }
+                }
+
                 elseif($array2[$i]=='post_date'){
                   echo '<td>'.$Jdf->jdate('Y/n/j-H:i:s',$model->$array2[$i]).'</td>'; 
                 }

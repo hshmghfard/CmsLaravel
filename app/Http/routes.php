@@ -30,6 +30,13 @@ Route::get('/buy_post','SiteController@buy_post');
 Route::post('/buy_post','SiteController@save_buypost');
 
 Route::auth();
+
+Route::get('social/{provider?}','SocialController@getSocialAuth');
+Route::get('social/callback/{provider?}','SocialController@getSocialAuthCallback');
+//Route::get('auth/github', 'Auth\AuthController@redirectToProvider');
+//Route::get('auth/github/callback', 'Auth\AuthController@handleProviderCallback');
+// Route::get('redirect/google', 'Auth\AuthController@redirectToGoogle');
+// Route::get('callback/google','Auth\AuthController@handleProviderCallbackGoogle');
 Route::get('page/{page}','SiteController@index')->where(['page'=>'[0-9]+']);
 
 
@@ -51,6 +58,7 @@ Route::resource('admin/category','CategoryController');
 Route::resource('admin/comment','AdminCommentController');
 Route::resource('admin/ansewer','AdminAnsewerController');
 Route::resource('admin/call','AdminCallController');
+Route::resource('admin/buy/posti','AdminBuyPosti');
 
 
 

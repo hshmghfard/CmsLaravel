@@ -9,7 +9,10 @@
         "laravel/framework": "5.2.*",
 		"laravelcollective/html": "5.2.*",
 		"guzzlehttp/guzzle": "~5.3|~6.0",
-		"artisaninweb/laravel-soap": "0.2.*"
+		"artisaninweb/laravel-soap": "0.2.*",
+        "nesbot/carbon": "^1.21",
+        "laravel/socialite": "^2.0",
+        "hybridauth/hybridauth":"dev-master"
 
     },
     "require-dev": {

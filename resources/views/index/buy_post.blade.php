@@ -25,17 +25,28 @@
 
             {!! Form::open(['url'=>'buy_post']) !!}
 
-                <div class="form-input">
-                    {!! Form::label('name','نام') !!}
-                    {!! Form::text('name',null,['class'=>'inputfiled','style'=>'width:300px;height:30px;']) !!}
+                <?php
+                    if($errors->has('name'))
+                    {
+                        ?>
+                        <div class="form-group has-error">
+                        {!! Form::label('name','عنوان درخواست',['class'=>'control-label','for'=>'inputError']) !!}
+                        {!! Form::text('name',null,['class'=>'form-control','id'=>'inputError','placeholder'=>'عنوان درخواست','style'=>'width:600px;']) !!}
 
+                        <span class="help-block"><?php echo $errors->first('name'); ?></span>
+                        </div>
                     <?php 
-                        if($errors->has('name'))
-                        {
-                            ?><p style="color:red;padding-top:10px;padding-right:25px;"><?=  $errors->first('name'); ?></p><?php
-                        }
-                    ?>
-                </div>
+                }
+                else
+                {?>
+                    <div class="form-group">
+                        {!! Form::label('name','عنوان درخواست') !!}
+                        {!! Form::text('name',null,['class'=>'form-control','placeholder'=>'عنوان درخواست','style'=>'width:600px;']) !!}
+                    </div>
+                <?php } ?>
+
+
+
 
                 <div class="form-input">
                     {!! Form::label('lname','نام خانوادگی') !!}

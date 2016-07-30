@@ -334,6 +334,34 @@
                     </ul>
                 </li>
 
+
+
+
+                <li class="sub-menu">
+                    <a href="javascript:;" class="">
+                        <i class="icon-book"></i>
+                        <span> مدیریت سفارشات </span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub">
+                        <li><a class="" href="<?= url('admin/buy/posti') ?>"> سفارشات پستی <?php
+                                $countcall = get_countposti_buy();
+                                if ( $countcall != 0 ){
+                                ?>
+                                <span style="color:red;">({!! get_countposti_buy() !!})</span>
+                                <?php } ?> </a></li>
+                        <li><a class="" href="<?= url('admin/comment') ?>"> سفارشات دانلودی  <?php
+                                $countcall = get_countcomment();
+                                if ( $countcall != 0 ){
+                                ?>
+                                <span style="color:red;">({!! get_countcomment() !!})</span>
+                                <?php } ?> </a></li>
+                    </ul>
+                </li>
+
+
+
+
                 <li>
                     <a class="" href="<?= url('admin/call') ?>">
                         <i class="icon-envelope"></i>
@@ -412,6 +440,7 @@ use App\QustionModel;
 use App\FavoritsModel;
 use App\TblRequestLearning;
 use App\CallModel;
+use App\TblBuyPost;
 
 
 function get_countcall()
@@ -460,6 +489,12 @@ function get_countrequest()
 {
     $countrequest=TblRequestLearning::where('request_state','0')->count();
     return $countrequest;
+}
+
+function get_countposti_buy()
+{
+    $count=TblBuyPost::where(['type_buy'=>1,'state'=>0])->count();
+    return $count;
 }
 
 ?>
