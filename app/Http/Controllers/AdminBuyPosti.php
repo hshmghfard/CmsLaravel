@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\TblBuyPost;
 use App\Http\Requests;
 use Auth;
+use App\CountBuyModel;
 
 class AdminBuyPosti extends Controller
 {
@@ -84,11 +85,13 @@ class AdminBuyPosti extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $id 
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
+        $model=TblBuyPost::find($id);
+        return View('admin.posti.edit',['model'=>$model]);
     }
 
     /**
@@ -110,5 +113,8 @@ class AdminBuyPosti extends Controller
      */
     public function destroy($id)
     {
+        $delete=TblBuyPost::where('id',$id)->delete();
+        $delete2=CountBuyModel::where('id_buy',$id)->delete();
+        return redirect('admin/buy/posti');
     }
 }
