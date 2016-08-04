@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\TblBuyPost;
 use App\Http\Requests;
 use Auth;
+use DB;
+use App\TblPost;
 use App\CountBuyModel;
 
 class AdminBuyPosti extends Controller
@@ -91,7 +93,15 @@ class AdminBuyPosti extends Controller
     public function edit($id)
     {
         $model=TblBuyPost::find($id);
-        return View('admin.posti.edit',['model'=>$model]);
+        $postid=CountBuyModel::where('id_buy',$id)->get();
+        $post=array();
+        $i=0;
+        foreach ($postid as $postid) {
+            $post[$i]=$postid->id_product;
+            $i++;
+        }
+        $model2=TblPost::find($post);
+        return View('admin.posti.edit',['model'=>$model,'model2'=>$model2]);
     }
 
     /**
@@ -116,5 +126,11 @@ class AdminBuyPosti extends Controller
         $delete=TblBuyPost::where('id',$id)->delete();
         $delete2=CountBuyModel::where('id_buy',$id)->delete();
         return redirect('admin/buy/posti');
+    }
+
+    public function state($id,$state)
+    {
+        DB::update('update tbl_buy_post set state=? where id=?',[$state,$id]);
+        return redirect('admin/buy/posti/'.$id.'/edit');
     }
 }

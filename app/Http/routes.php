@@ -59,6 +59,7 @@ Route::resource('admin/comment','AdminCommentController');
 Route::resource('admin/ansewer','AdminAnsewerController');
 Route::resource('admin/call','AdminCallController');
 Route::resource('admin/buy/posti','AdminBuyPosti');
+Route::get('/admin/buy/posti/{id}/{state}','AdminBuyPosti@state');
 
 
 

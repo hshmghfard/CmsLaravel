@@ -1,5 +1,7 @@
 <?php
-
+use App\CountBuyModel;
+use App\lib\Jdf;
+// use DB;
 ?>
 @extends('layouts.AdminPanel')
 @section('content')
@@ -16,8 +18,8 @@
     			<td> ایمیل </td>
     			<td> موبایل </td>
     			<td> کد پستی </td>
-    			<td> آدرس </td>
     			<td> تاریخ </td>
+    			<td> آدرس </td>
     			<td> وضعیت فعلی سفارش </td>
     		</tr>
     		<tr>
@@ -26,7 +28,7 @@
     			<td> {{ $model->email }} </td>
     			<td> {{ $model->mobile }} </td>
     			<td> {{ $model->postal_code }}  </td>
-    			<td> {{ $model->date }} </td>
+    			<?php $Jdf=new Jdf(); echo '<td>'.$Jdf->jdate('Y/n/j-H:i:s',$model->date).'</td>'; ?>
     			<td> {{ $model->address }} </td>
     			<td> 
     				<?php
@@ -52,13 +54,56 @@
     		</tr>
     	</table>
 
-    	<div style="margin-top:50px;"></div>
 
+    	<div style="margin-top:100px;"></div>
+    	<p style="font-family:Yekan;padding-right:30px;padding-top:20px;padding-bottom:10px;"> سفارش کامل به شرح زیر است </p>
+    	<div style="width:95%;height:3px;background:#48adff;margin:auto;margin-bottom:30px;"></div>
     	<table style="width:90%;height:auto;border:2px #000000;padding:10px;">
     		
-    		
+    		<tr>
+
+    			<td>
+    				عنوان محصول
+    			</td>
+
+    			<td>
+    				توضیح کوتاه
+    			</td>
+
+    			<td>
+    				تعداد سفارش
+    			</td>
+
+    		</tr>
+
+    		@foreach( $model2 as $model2 )
+    		<tr>
+    			<td>{{ $model2->post_title }}</td>
+    			<td>{{ $model2->post_mintext }}</td>
+    			<td>
+    				<?php
+    					$count=CountBuyModel::where('id_product',$model2->id)->first()['count'];
+    					echo $count;
+    				?> 
+    			</td>
+    		</tr>
+    		@endforeach
 
     	</table>
+    </div>
+
+
+    
+    <div style="margin-top:100px;">
+
+    	<p style="font-family:Yekan;padding-right:30px;padding-top:20px;padding-bottom:10px;">عملیات سفارش</p>
+    	<div style="width:95%;height:3px;background:#48adff;margin:auto;margin-bottom:30px;"></div>
+
+
+
+    	<a href="<?= Url('/admin/buy/posti/'.$model->id.'/1') ?>"><span class="product_btn">درحال انتظار برای تایید</span></a>
+    	<a href="<?= Url('/admin/buy/posti/'.$model->id.'/2') ?>"><span class="product_btn">در حال بسته بندی برای ارسال</span></a>
+    	<a href="<?= Url('/admin/buy/posti/'.$model->id.'/3') ?>"><span class="product_btn">تایید| بسته بندی| ارسال گردید</span></a>
     </div>
 
 
