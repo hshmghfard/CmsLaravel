@@ -69,11 +69,7 @@
 
 @endforeach
 
-
-
-
 <?php
-
 use App\TblComment;
 use App\User;
 

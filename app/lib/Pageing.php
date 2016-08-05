@@ -5,9 +5,9 @@ class Pageing
 {
 	public static function view($page,$count,$url=null)
 	{
-		$total=ceil($count/10);
+		$total=ceil($count/2);
 		if($total>1)
-		{
+		{ 
 			
 			?>
 			<div style="border:1px solid #FFF;float:right;background:#FFF;width:90px;text-align:center;">
@@ -25,7 +25,7 @@ class Pageing
 			{
 				if($paged_start!=$page)
 				{
-					?><div style="border:1px solid #FFF;margin-right:10px;padding-right:10px;padding-left:10px;float:right;background:#FFF;text-align:center;"><a style="color:#000"  href="<?= self::get_url() ?>page/<?= $paged_start ?>"><?= $paged_start; ?></a></div><?php
+					?><div style="border:1px solid #FFF;margin-right:10px;padding-right:10px;padding-left:10px;float:right;background:#FFF;text-align:center;"><a style="color:#000"  href="<?= self::get_url() ?>/page/<?= $paged_start ?>"><?= $paged_start; ?></a></div><?php
 				}
 				else
 				{
@@ -35,7 +35,7 @@ class Pageing
 
 			if($page<$total)
 			{
-				?><div style="border:1px solid #FFF;margin-right:10px;padding-right:10px;padding-left:10px;float:right;background:#FFF;text-align:center;"><a style="color:#000" href="<?= self::get_url() ?>page/<?= $page+1 ?>">صفحه بعدی</a></div><?php
+				?><div style="border:1px solid #FFF;margin-right:10px;padding-right:10px;padding-left:10px;float:right;background:#FFF;text-align:center;"><a style="color:#000" href="<?= self::get_url() ?>/page/<?= $page+1 ?>">صفحه بعدی</a></div><?php
 
 			}
 		}
@@ -61,11 +61,11 @@ class Pageing
 		$url=str_replace('page','', $url);
 		if($url=='/')
 		{
-			return Url().'/';
+			return Url('/');
 		}
 		else
 		{
-			return Url().'/'.$url.'/';
+			return Url('/'.$url.'/');
 		}
 		
 	}

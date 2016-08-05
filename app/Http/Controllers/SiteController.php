@@ -27,25 +27,25 @@ class SiteController extends Controller
      */
     public function index($page=1)
     {
-        if($page!=0)
-       {
-         $skip=($page-1)*10;
-         $Product=DB::table('tbl_post')->orderBy('id','desc')->skip($skip)->take(10)->get();
-         if(!empty($Product))
-         {
-             $total=TblPost::count();
-             return View('index.IndexPage',['Products'=>$Product,'page'=>$page,'total'=>$total]);
-         }
-         else
-         {
-            
-            abort('404','برای درخواست شما باسخی یافت نشد');
-         } 
-         }
-         else
-         {
-            abort('404');
-         } 
+      if($page!=0)
+      {
+        $skip=($page-1)*2;
+        $Product=DB::table('tbl_post')->orderBy('id','desc')->skip($skip)->take(2)->get();
+        if(!empty($Product))
+        {
+          $total=TblPost::count();
+          return View('index.IndexPage',['Products'=>$Product,'page'=>$page,'total'=>$total]);
+        }
+        else
+        {  
+          abort('404','برای درخواست شما باسخی یافت نشد');
+        } 
+      }
+      else
+      {
+        abort('404');
+      }
+
     }
 
     /**

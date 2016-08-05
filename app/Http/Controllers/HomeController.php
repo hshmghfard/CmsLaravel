@@ -21,8 +21,8 @@ class HomeController extends Controller
     {
     	if($page!=0)
        	{
-	         $skip=($page-1)*5;
-	         $Product=DB::table('tbl_post')->orderBy('id','desc')->skip($skip)->take(5)->get();
+	         $skip=($page-1)*2;
+	         $Product=DB::table('tbl_post')->orderBy('id','desc')->skip($skip)->take(2)->get();
 	         if(!empty($Product))
 	         {
 	             $total=TblPost::count();

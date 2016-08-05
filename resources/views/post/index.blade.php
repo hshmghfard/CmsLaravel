@@ -11,7 +11,6 @@ use App\lib\CommentShow;
 $array1=array('ردیف','عنوان نوشته','تاریخ انتشار','کد کاربر','عملیات');
 $array2=array('-','post_title','post_date','user');
 $GridView=CommentShow::view($array1,$array2,$model,$page,$total,$ntable='post');
-
 ?>
 
 {!! $model->render() !!}
