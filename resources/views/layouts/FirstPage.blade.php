@@ -76,8 +76,9 @@ color:white;
 
        
 
-<form action="" method="POST">
-    <input  id="cursor" type="text" name="s"  class="srchbox" value="" placeholder="  جستجو آموزش ... "/>
+<form action="<?= Url('search') ?>" method="POST">
+    <input type="hidden" name="_token" value="<?= csrf_token() ?>">
+    <input  id="cursor" type="text" name="content"  class="srchbox" placeholder="  جستجو آموزش ... "/>
     <button style="
     line-height: 26px;
     width: 32px;

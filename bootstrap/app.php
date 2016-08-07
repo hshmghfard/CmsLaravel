@@ -41,6 +41,8 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+$app->register(Artisaninweb\SoapWrapper\ServiceProvider::class);
+class_alias('Artisaninweb\SoapWrapper\Facades\SoapWrapper', 'SoapWrapper');
 /*
 |--------------------------------------------------------------------------
 | Return The Application

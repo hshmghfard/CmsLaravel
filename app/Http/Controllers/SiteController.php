@@ -17,6 +17,8 @@ use App\TagsAndPostModel;
 use App\CallModel;
 use App\TblBuyPost;
 use App\CountBuyModel;
+use App\lib\BuyOnline;
+use Artisaninweb\SoapWrapper\Facades\SoapWrapper;
 
 class SiteController extends Controller
 {
@@ -92,6 +94,83 @@ class SiteController extends Controller
         return View('index.single',['Product'=>$Product,'comment'=>$Comment]);
     }
 
+
+
+    public function buyonline()
+    {
+      return View('index.pay');
+    }
+
+
+    public function postbuyonline(Request $request)
+    {
+      // $price=$request->price;
+      // $resnumber=$request->resnumber;
+      // $description=$request->description;
+      // $paymenter=$request->paymenter;
+      // $email=$request->email;
+      // $mobile=$request->mobile;
+      // $resulte=BuyOnline::pardakht($price,$resnumber,$description,$paymenter,$email,$mobile);
+
+      // $MerchantID='100001'; // شناسه درگاه
+      // $Password='abcdeFGHI';// کلمه عبور درگاه
+      // $Price=1000; //Price By Toman
+      // $ReturnPath='http://localhost:84/CmsLaravel/buy';
+      // $ResNumber=1234 ;// Order Id In Your System
+      // $Description=urlencode('جزئیات سفارش ');
+      // $Paymenter=urlencode('نام پرداخت کننده ');
+      // $Email='Paymenter@yahoo.com';
+      // $Mobile='09127038019';
+      // $client=new SoapWrapper('http://sandbox.arianpal.com/WebService.asmx?wsdl');
+      // $res=$client->RequestPayment(array("MerchantID" => $MerchantID , "Password" =>$Password , "Price" =>$Price, "ReturnPath" =>$ReturnPath, "ResNumber" =>$ResNumber, "Description" =>$Description, "Paymenter" =>$Paymenter, "Email" =>$Email, "Mobile" =>$Mobile));
+      // $PayPath = $res->RequestPaymentResult->PaymentPath;
+      // $Status = $res->RequestPaymentResult->ResultStatus;
+      // if($Status == 'Succeed')
+      // {
+      // echo "<html><head><title>Connecting ....</title><head><body onload=\"javascript:window.location='$PayPath'\" > درحال اتصال به
+      // درگاه </body></html>";
+      // }
+      // else
+      // {
+      // echo $Status;
+      // }
+      // var_dump($resulte->ResultStatus);
+
+
+        //   SoapWrapper::add(function ($service) {
+        //     $service
+        //         ->name('currency')
+        //         ->wsdl('http://sandbox.arianpal.com/WebService.asmx?wsdl')
+        //         ->trace(true)                                                   // Optional: (parameter: true/false)
+        //         ->header()                                                      // Optional: (parameters: $namespace,$name,$data,$mustunderstand,$actor)
+        //         ->customHeader($customHeader)                                   // Optional: (parameters: $customerHeader) Use this to add a custom SoapHeader or extended class                
+        //         ->cookie()                                                      // Optional: (parameters: $name,$value)
+        //         ->location()                                                    // Optional: (parameter: $location)
+        //         ->certificate()                                                 // Optional: (parameter: $certLocation)
+        //         ->cache(WSDL_CACHE_NONE)                                        // Optional: Set the WSDL cache
+        //         ->options(['login' => 'username', 'password' => 'password']);   // Optional: Set some extra options
+        // });
+
+        // $data = [
+        //     'CurrencyFrom' => 'USD',
+        //     'CurrencyTo'   => 'EUR',
+        //     'RateDate'     => '2014-06-05',
+        //     'Amount'       => '1000'
+        // ];
+
+        // // Using the added service
+        // SoapWrapper::service('currency', function ($service) use ($data) {
+        //     var_dump($service->getFunctions());
+        //     var_dump($service->call('GetConversionAmount', [$data])->GetConversionAmountResult);
+        // });
+
+    }
+
+
+    public function buy(Request $request)
+    {
+      
+    }
 
     public function ShowByCategory($cat,$page=1)
     {
@@ -337,5 +416,17 @@ class SiteController extends Controller
 
             return redirect('/');
         }
+    }
+
+    public function searchview()
+    {
+      return View('index.search');
+    }
+
+    public function search(Request $request)
+    {
+      $model=TblPost::orderBy('id','desc')->where('post_content','LIKE','%'.$request->get('content').'%')->get();
+
+      return View('index.search',['model'=>$model]);
     }
 }

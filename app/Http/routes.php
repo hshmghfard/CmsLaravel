@@ -28,7 +28,11 @@ Route::post('/empty','SiteController@empty_cart');
 Route::post('/remove_cart','SiteController@remove_cart');
 Route::get('/buy_post','SiteController@buy_post');
 Route::post('/buy_post','SiteController@save_buypost');
-
+Route::get('search','SiteController@searchview');
+Route::post('search','SiteController@search');
+Route::get('buyonline','SiteController@buyonline');
+Route::post('buyonline','SiteController@postbuyonline');
+Route::post('buy','SiteController@buy');
 Route::auth();
 
 Route::get('social/{provider?}','SocialController@getSocialAuth');
