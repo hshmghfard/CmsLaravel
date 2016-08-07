@@ -26,6 +26,7 @@
                                     <option  value="1">عنوان و محتوای محصول</option>
                                     <option value="2">عنوان محصول</option>
                                     <option  value="3">محتوای محصول</option>
+                                    <option value="4"> برچسبها و کلمات کلیدی </option>
                             </select></td>
                         </tr>
 

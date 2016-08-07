@@ -5,6 +5,7 @@ class Pageing
 {
 	public static function view($page,$count,$url=null)
 	{
+
 		$total=ceil($count/2);
 		if($total>1)
 		{ 
@@ -17,7 +18,7 @@ class Pageing
 			<?php
 			if($page>1)
 			{
-				?><div style="border:1px solid #FFF;margin-right:10px;padding-right:10px;padding-left:10px;float:right;background:#FFF;text-align:center;"><a style="color:#000" href="<?= self::get_url() ?>page/<?= $page-1 ?>">صفحه قبلی</a></div><?php
+				?><div style="border:1px solid #FFF;margin-right:10px;padding-right:10px;padding-left:10px;float:right;background:#FFF;text-align:center;"><a style="color:#000" href="<?= self::get_url() ?>/page/<?= $page-1 ?>">صفحه قبلی</a></div><?php
 			}
 			$paged_start=(($page-4)>1) ? $page-4 : 1;
 			$paged_last=(($page+4)<$total) ? $page+4 : $total;
@@ -39,8 +40,10 @@ class Pageing
 
 			}
 		}
+
 		
 	}
+
 	public static function get_url()
 	{
 		$url=Route::current()->uri();
@@ -49,13 +52,13 @@ class Pageing
 		{
 			$url=str_replace('{page}','', $url);
 		}
-		if(array_key_exists('menu',$parameters))
+		if(array_key_exists('cat',$parameters))
 		{
-			$url=str_replace('{menu}',$parameters['menu'], $url);
+			$url=str_replace('{cat}',$parameters['cat'], $url);
 		}
-		if(array_key_exists('zir_menu',$parameters))
+		if(array_key_exists('tag',$parameters))
 		{
-			$url=str_replace('{zir_menu}',$parameters['zir_menu'], $url);
+			$url=str_replace('{tag}',$parameters['tag'], $url);
 		}
 		$url=str_replace('/page/','', $url);
 		$url=str_replace('page','', $url);

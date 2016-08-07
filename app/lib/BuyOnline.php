@@ -18,7 +18,7 @@ class BuyOnline
     {
         $ch = curl_init();
         curl_setopt($ch,CURLOPT_URL,$url);
-        curl_setopt($ch,CURLOPT_POSTFIELDS,"api=$api&MerchantID=$MerchantID&Password=$Password&Price=$Price&RefNum=$RefNum");
+        curl_setopt($ch,CURLOPT_POSTFIELDS,"MerchantID=$MerchantID&Password=$Password&Price=$Price&RefNum=$RefNum");
         curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, FALSE);
         curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
         $res = curl_exec($ch);
@@ -38,7 +38,7 @@ class BuyOnline
 		$Email=$email;
 		$Mobile=$mobile;
         $redirect = urlencode('http://localhost:84/CmsLaravel/buy');
-        return $result =self::send($url,$MerchantID,$Password,$Price,$ResNumber,$Description,$Paymenter,$Email,$Mobile,$redirect);
+        return $result =self::send($url,$MerchantID,$Password,$Price,$redirect,$ResNumber,$Description,$Paymenter,$Email,$Mobile);
     }
     public static function Verify($price,$refnum)
     {
@@ -47,6 +47,6 @@ class BuyOnline
 		$Price=$price;
 		$RefNum=$refnum;
         $url = 'http://sandbox.arianpal.com/postservice/?Method=Verify';
-        return $Verify=self::get($url,$api,$trans_id,$id_get);
+        return $Verify=self::get($url,$MerchantID,$Password,$Price,$RefNum);
     }
 }

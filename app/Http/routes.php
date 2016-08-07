@@ -15,7 +15,9 @@
 Route::resource('/', 'HomeController');
 Route::get('/content/{title}','SiteController@show2');
 Route::get('/category/{cat}','SiteController@ShowByCategory');
+Route::get('/category/{cat}/page/{page}','SiteController@ShowByCategory');
 Route::get('/tag/{tag}','SiteController@ShowByTag');
+Route::get('/tag/{tag}/page/{page}','SiteController@ShowByTag');
 Route::get('/home', 'HomeController@index');
 Route::get('/learning','SiteController@learning');
 Route::get('/about','SiteController@about');

@@ -104,14 +104,16 @@ class SiteController extends Controller
 
     public function postbuyonline(Request $request)
     {
-      // $price=$request->price;
-      // $resnumber=$request->resnumber;
-      // $description=$request->description;
-      // $paymenter=$request->paymenter;
-      // $email=$request->email;
-      // $mobile=$request->mobile;
-      // $resulte=BuyOnline::pardakht($price,$resnumber,$description,$paymenter,$email,$mobile);
+      $price=$request->price;
+      $resnumber=$request->resnumber;
+      $description=$request->description;
+      $paymenter=$request->paymenter;
+      $email=$request->email;
+      $mobile=$request->mobile;
+      $resulte=BuyOnline::pardakht($price,$resnumber,$description,$paymenter,$email,$mobile);
 
+      // var_dump($request->RefNamber);
+      echo $r=BuyOnline::Verify($price,$resnumber);
       // $MerchantID='100001'; // شناسه درگاه
       // $Password='abcdeFGHI';// کلمه عبور درگاه
       // $Price=1000; //Price By Toman
@@ -169,20 +171,17 @@ class SiteController extends Controller
 
     public function buy(Request $request)
     {
-      
+      var_dump($request);
     }
 
     public function ShowByCategory($cat,$page=1)
     {
-
-
         $category=TblCategory::where('category_name',$cat)->first()['id'];
-
         if($category)
         {
 
-            $skip=($page-1)*10;
-            $postcat=DB::table('tbl_post_category')->where('category_id',$category)->orderBy('post_id','desc')->skip($skip)->take(10)->get();
+            $skip=($page-1)*2;
+            $postcat=DB::table('tbl_post_category')->where('category_id',$category)->orderBy('post_id','desc')->skip($skip)->take(2)->get();
 
             if(!empty($postcat))
             {
@@ -210,8 +209,8 @@ class SiteController extends Controller
         if($tags)
         {
 
-            $skip=($page-1)*10;
-            $postcat=DB::table('tbl_tags_post')->where('id_tag',$tags)->orderBy('id_post','desc')->skip($skip)->take(10)->get();
+            $skip=($page-1)*2;
+            $postcat=DB::table('tbl_tags_post')->where('id_tag',$tags)->orderBy('id_post','desc')->skip($skip)->take(2)->get();
 
             if(!empty($postcat))
             {
@@ -425,7 +424,35 @@ class SiteController extends Controller
 
     public function search(Request $request)
     {
-      $model=TblPost::orderBy('id','desc')->where('post_content','LIKE','%'.$request->get('content').'%')->get();
+
+      if( isset($request->type) )
+      {
+        if ($request->type==1) {
+          $model=TblPost::orderBy('id','desc')->where('post_content','LIKE','%'.$request->get('content').'%')->orwhere('post_title','LIKE','%'.$request->get('content').'%')->get();
+        }
+        elseif ($request->type==2) {
+          $model=TblPost::orderBy('id','desc')->where('post_title','LIKE','%'.$request->get('content').'%')->get();
+        }
+        elseif ($request->type==3) {
+          $model=TblPost::orderBy('id','desc')->where('post_content','LIKE','%'.$request->get('content').'%')->get();
+        }
+        elseif ($request->type==4) {
+          $idtag=TagsModel::where('tags_name',$request->get('content'))->first()['id'];
+          $postidtag=TagsAndPostModel::where('id_tag',$idtag)->get();
+          $idpost=array();
+          $i=0;
+          foreach ($postidtag as $postidtag) {
+            $idpost[$i]=$postidtag->id_post;
+            $i++;
+          }
+          // var_dump($idpost);
+          $model=TblPost::orderBy('id','desc')->find($idpost);
+        }
+      }
+      else
+      {
+        $model=TblPost::orderBy('id','desc')->where('post_content','LIKE','%'.$request->get('content').'%')->orwhere('post_title','LIKE','%'.$request->get('content').'%')->get();
+      }
 
       return View('index.search',['model'=>$model]);
     }
