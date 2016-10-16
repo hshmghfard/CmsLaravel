@@ -24,7 +24,7 @@ Route::get('/about','SiteController@about');
 Route::get('/callme','SiteController@call');
 Route::post('/callme','SiteController@save');
 Route::resource('comment','CommentController');
-Route::post('/add','SiteController@add');
+Route::post('/add','SiteController@add'); 
 Route::get('/checkout','SiteController@checkout');
 Route::post('/empty','SiteController@empty_cart');
 Route::post('/remove_cart','SiteController@remove_cart');
@@ -35,6 +35,41 @@ Route::post('search','SiteController@search');
 Route::get('buyonline','SiteController@buyonline');
 Route::post('buyonline','SiteController@postbuyonline');
 Route::post('buy','SiteController@buy');
+Route::get('danesh','HomeController@danesh');
+
+Route::get('request',function(){
+	try {
+ 
+		$gateway = \Gateway::make(new Larabookir\Gateway\Zarinpal\Zarinpal());
+		$gateway->setCallback(url('callback/from/bank'));
+		$gateway->price(1000)->ready();
+		$refId =  $gateway->refId();
+		$transID = $gateway->transactionId();
+ 
+		// Your code here
+ 
+		return $gateway->redirect();
+ 
+	} catch (Exception $e) {
+ 
+		echo $e->getMessage();
+	}
+});
+
+Route::any('callback/from/bank',function(){
+	try {
+ 
+		$gateway = \Gateway::verify();
+		$trackingCode = $gateway->trackingCode();
+		$refId = $gateway->refId();
+		$cardNumber = $gateway->cardNumber();
+
+	} catch (Exception $e) {
+ 
+		echo $e->getMessage();
+	}
+});
+
 Route::auth();
 
 Route::get('social/{provider?}','SocialController@getSocialAuth');
@@ -48,6 +83,7 @@ Route::get('page/{page}','SiteController@index')->where(['page'=>'[0-9]+']);
 
 Route::get('user/panel','UserPanelController@index');
 Route::resource('user/panel/profile','ProFileController');
+Route::get('user/panel/editprofile','ProFileController@editprofile');
 Route::resource('user/panel/request','RequestLearning');
 Route::resource('user/panel/favorits','FavoritsController');
 Route::resource('user/panel/qustion', 'QustionController');
@@ -66,10 +102,13 @@ Route::resource('admin/ansewer','AdminAnsewerController');
 Route::resource('admin/call','AdminCallController');
 Route::resource('admin/buy/posti','AdminBuyPosti');
 Route::get('/admin/buy/posti/{id}/{state}','AdminBuyPosti@state');
+Route::get('/admin/show/profile','AdminController@profile');
 
 
 
 
 Route::post('/send','TestController@index');
 Route::post('/test','TestController@save');
+Route::post('/test2','TestController@test2');
 Route::get('/test','TestController@show');
+Route::get('/zarin','TestController@zarin');

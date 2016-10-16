@@ -27,8 +27,7 @@ class UserController extends Controller
 
             return redirect('login')->send();
 
-        }
-          // $this->middleware('auth'); 
+        } 
     }
 
 
@@ -89,7 +88,7 @@ class UserController extends Controller
         {
             return redirect('/admin/user');
         }
-
+ 
         
     }
 

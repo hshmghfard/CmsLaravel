@@ -1,0 +1,704 @@
+/*
+    Copyright 2015
+    Graphic Design : iVahid.com
+    Programming : Reza Dalir At www.Designic.ir
+    All Right Reserved
+*/
+@media screen and (max-width: 1270px){
+    .main{
+        width:95%;
+        margin:auto;
+    }
+    #shopdesc{
+        display: none;
+    }
+    #shopping-bar{
+        width:91px;
+        float:left;
+        background-color:transparent;
+        border-bottom: 0px solid transparent;
+        margin-right:0px;
+    }
+    #shopmark{
+        float:left;
+        border-bottom: 2px solid #333333;
+    }
+    #arrow{
+        display: none;
+    }
+    .opena{
+        height:350px;
+        position: relative;
+        float:right;
+        visibility: hidden;
+    }
+    .bottom-menu ul li:hover .opena{
+        visibility: visible;
+    }
+    .bottom-menu .main-navigation > ul > li > ul{
+        width: 300px;
+        height: 100%;
+        overflow-y: scroll;
+        right:auto;
+        margin-right:-17px;
+    }
+    #shopping-drop #drop{
+        margin-left:0px;
+    }
+    #footer{
+        height:auto;
+        float:right;
+        padding-bottom:5%;
+    }
+    #footer #outrow{
+        margin-right:4%;
+    }
+    .rightads{
+        width: 100%;	
+    }
+    .leftads{
+        width: 100%;	
+    }
+}
+@media screen and (max-width: 1140px){
+    #shopmark{
+        width:80px;
+    }
+    #header #header-content #top-menu ul li{
+        width:80px;
+    }
+    #header #header-content #top-menu ul .home{
+        margin-right:31px;
+    }
+    #header #header-content #top-menu ul .shop{
+        margin-right:32px;
+    }
+    #header #header-content #top-menu ul .cooperate{
+        margin-right:26px;
+    }
+    #header #header-content #top-menu ul .requare{
+        margin-right:33px;
+    }
+    #header #header-content #top-menu ul .support{
+        margin-right:27px;
+    }
+    #header #header-content #top-menu ul .advertise{
+        margin-right:30px;
+    }
+    #header #header-content #top-menu ul .contact{
+        margin-right:30px;
+    }
+    #header #header-content #top-menu ul .panel{
+        margin-right:30px;
+    }
+    #shopmark .shopping{
+        margin-right:29px;
+    }
+}
+@media screen and (max-width: 1044px){
+    #shopmark{
+        position: relative;
+    }
+    #header #header-content{
+        height:220px;
+    }
+    .hclear{
+        clear: both;
+    }
+    #header #header-content #logo{
+        width:200px;
+        height:auto;
+        direction: rtl;
+        float:none;
+        margin:auto;
+    }
+
+    #shopdesc{
+        display: block;
+    }
+    #shopping-bar{
+        width:217px;
+        float:left;
+        background-color:#424242;
+        border-bottom: 2px solid #333333;
+    }
+    #shopmark{
+        float:right;
+        border-bottom: 0px solid transparent;
+    }
+    #arrow{
+        display: block;
+    }
+
+    .fixed{
+        margin-top:-225px;
+    }
+}
+@media screen and (max-width: 967px){
+    #shopdesc{
+        display: none;
+    }
+    #shopping-bar{
+        width:91px;
+        float:left;
+        background-color:#3c3c3c;
+        border-bottom: 0px solid transparent;
+        margin-right:0px;
+    }
+    #shopmark{
+        float:left;
+        border-bottom: 2px solid #333333;
+    }
+    #arrow{
+        display: none;
+    }
+
+}
+@media screen and (max-width: 450px){
+    #mainer{
+        display: none;
+    }
+}
+@media screen and (max-width: 833px){
+    #header #header-content #top-menu ul li{
+        display: none;
+    }
+    #header #header-content #top-menu{
+        margin-top:15px;
+    }
+    a#nav-toggle {
+        display: block;
+    }
+    #mobile-nav {
+        display: block;
+    }
+    #shopping-bar{
+        float:none;
+        margin:auto;
+        display: none;
+        padding-top:7px;
+        padding-bottom:7px;
+    }
+    .fixed{
+        margin-top:-480px;
+    }
+    .shopping{
+        display: none;
+    }
+    #shopmark{
+        display: none;
+        margin:auto;
+        height:10px;
+        width: 100%;
+        margin-bottom:0px;
+        padding-top:7px;
+        padding-bottom:7px;
+        background-color:#424242;
+    }
+    #drop{
+        display: none;
+    }
+    #header #header-content{
+        height: 170px;
+    }
+    .advertise .rightads{
+        width: 61%;	
+    }
+    .advertise .leftads{
+        width: 39%;	
+    }
+
+}
+@media screen and (max-width: 880px){
+    .bottom-menu ul li{
+        padding-left:10px;
+        padding-right:10px;
+        font-size:11px;
+    }
+    .bottom-menu .main-navigation > ul > li > ul{
+        margin-right:-10px;
+    }
+    .bottom-menu{
+        height:auto;
+    }
+    .bottom-menu .main-navigation > ul > li > ul{
+        margin-top:20px;
+    }
+}
+@media screen and (max-width: 950px){
+    #news ul li{
+        font-size:11px;
+    }
+    #notfound .main{
+        width:100%;
+    }
+    #notfound .logo{
+        display: inline-table;
+        clear:both;
+        width:100%;
+        direction: rtl;
+        text-align: right;
+        background-position: right;
+    }
+}
+@media screen and (max-width: 1150px){
+    .openers .title{
+        width:80%;
+    }
+    .page .sharebox .boxed p{
+        display: none;
+    }
+}
+@media screen and (max-width: 1024px){
+    .bottom-menu #fixshop{
+        display: none;
+    }
+}
+@media screen and (max-width: 1320px){
+    .downloadbox .way{
+        width:90%;
+    }
+    .downloadbox .way .online{
+        width:100%;
+        margin-right:3%;
+    }
+    .downloadbox .way .pay{
+        width:100%;
+        margin-right:3%;
+    }
+    .downloadbox .way .posting{
+        width:100%;
+        margin-right:3%;
+    }
+}
+@media screen and (max-width: 700px){
+
+    .downloadbox .way .online{
+        width:89%;
+        margin-right:3%;
+    }
+    .downloadbox .way .pay{
+        width:89%;
+        margin-right:3%;
+    }
+    .downloadbox .way .posting{
+        width:89%;
+        margin-right:3%;
+    }
+}
+
+@media screen and (max-width: 1315px){
+    #wrapper #posts{
+        width:70%;
+    }
+    #slideshow{
+        width:70%;
+    }
+    #wrapper .posts{
+        width:100%;
+    }
+    .accordion .header{
+        padding-left:1.5%;
+        padding-right:1.5%;
+    }
+}
+@media screen and (max-width: 1185px){
+    #wrapper #posts{
+        width:65%;
+    }
+    #slideshow{
+        width:65%;
+    }
+    .post .moreinfo .stat{
+        font-size:11px;
+    }
+    .post .moreinfo .writer{
+        font-size:11px;
+    }
+    .post .moreinfo .comments{
+        font-size:11px;
+    }
+    #wrapper #abzarak{
+        float: left;
+        margin-left:2%;
+    }
+    #special{
+        float: left;
+        margin-left:2%;
+    }
+    .post .postpicture{
+        float:none;
+        margin: auto;
+        clear: both;
+    }
+    .post .posttitle{
+        margin-bottom:20px;
+    }
+    .post .postinfo{
+        display: none;
+    }
+}
+@media screen and (max-width: 1120px){
+    #wrapper #abzarak{
+        margin-left:1%;
+    }
+    #special{
+        margin-left:1%;
+    }
+}
+@media screen and (max-width: 1111px){
+    #wrapper #posts{
+        width:64%;
+    }
+    #slideshow{
+        width:64%;
+    }
+    #wrapper #abzarak{
+        margin-left:1%;
+    }
+    #special{
+        margin-left:1%;
+    }
+    .posts .moreinfo{
+        width:100%;
+        text-align: right;
+        float:none;
+        clear: both;
+        margin: auto;
+    }
+    .posts .moreinfo .writer{
+        float: none;
+        display: inline-block;
+        margin-right:25px;
+    }
+    .posts .moreinfo .stat{
+        float: none;
+        display: inline-block;
+    }
+    .posts .moreinfo .comments{
+        float: none;
+        display: inline-block;
+    }
+    .posts .readmore{
+        float:none;
+        margin:auto;
+        text-align: center;
+        margin-top:20px;
+    }
+}
+@media screen and (max-width: 1253px){
+    .posts .stars{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1050px){
+    #wrapper #posts{
+        width:60%;
+    }
+    .video{
+        display: none;
+    }
+    #card h5{
+        display: none;
+    }
+    #slideshow{
+        width:60%;
+    }
+    #wrapper #abzarak{
+        margin-left:2%;
+    }
+    #special{
+        margin-left:2%;
+    }
+}
+@media screen and (max-width: 800px){
+
+    #news{
+        display: none;
+    }
+    #sendcm .message{
+        width:90%;
+    }
+}
+@media screen and (max-width: 995px){
+    .catcontent .cattitle h4{
+        margin-bottom:10px;
+    }
+    .video{
+        display: block;
+    }
+
+    .fixed #download{
+        display: none;
+    }
+    #card h5{
+        display: block;
+    }
+    .page .sharebox .boxed p{
+        display: block;
+    }
+    .headcontent ul{
+        text-align: right;
+    }
+    #wrapper #abzarak{
+        width:100%;
+        text-align: center;
+        margin: auto;
+        margin-top:20px;
+        direction: rtl;
+    }
+    #wrapper #abzarak #category{
+        width:49%;
+    }
+    #wrapper #abzarak #mag{
+        width:49%;
+        margin-right:2%;
+        margin-top:0px;
+    }
+    #wrapper #abzarak #teachers{
+        width:49%;
+        margin-top:0px;
+        margin-top:2%;
+    }
+    #wrapper #abzarak #nikandroid{
+        width:49%;
+        margin-top:0px;
+        margin-right:2%;
+        margin-top:2%;
+    }
+    #offer .offerlogo{
+        float:right;
+    }
+    #wrapper #abzarak #matlab{
+        width:49%;
+        margin-top:0px;
+        margin-top:2%;
+    }
+    #wrapper #abzarak #source{
+        width:49%;
+        margin-top:0px;
+        margin-right:2%;
+        margin-top:2%;
+    }
+    #wrapper #abzarak #order{
+        width:49%;
+        margin-top:0px;
+        margin-top:2%;
+    }
+    #wrapper #abzarak #offer{
+        width:49%;
+        margin-top:0px;
+        margin-right:2%;
+        margin-top:2%;
+    }
+    #wrapper #abzarak #rankbox ul{
+        width:94%;
+    }
+    #special{
+        width:100%;
+        text-align: center;
+        margin: auto;
+        margin-top:20px;
+        overflow:hidden;
+    }
+    .wclear{
+        clear:both;
+    }
+    #wrapper #posts{
+        width:100%;
+    }
+    #slideshow{
+        width:100%;
+    }
+    .arrowbox{
+        position: absolute;
+        border-bottom:0px solid transparent;
+        left:3%;
+        z-index:1;
+    }
+    #matlab .arrowbox{
+        position:absolute;
+        border-bottom:0px solid transparent;
+        left:52%;
+    }
+
+    #searchbox{
+        width:100%;
+        direction: ltr;
+    }
+    #searchbox .input{
+        width:100%;
+        direction: rtl;
+    }
+    #searchbox .submit{
+        position: absolute;
+        margin-top:-38px;
+
+    }
+}
+@media screen and (max-width: 500px){
+    .post-sabet .post .stexts,
+    .post-sabet .post .simage-buy{
+        width:100%;  margin-bottom:20px;
+    }
+    #wrapper #abzarak #rankbox ul{
+        width:90%;
+    }
+    .aclear{
+        clear: both;
+    }
+    #notfound .solve{
+        float:right;
+        margin-right:0px;
+        margin-top:20px;
+    }
+}
+@media screen and (max-width: 700px){
+    .demo{
+        display: none;
+    }
+    .special{
+        display: none;
+    }
+    .posts .moreinfo .writer{
+        margin-right:25px;
+    }
+    .video{
+        display: none;
+    }
+    #card h5{
+        display: none;
+    }
+    .posts .moreinfo .stat{
+        margin-right:25px;
+        margin-top:5px;
+    }
+    .posts .moreinfo .comments{
+        margin-right:25px;
+        margin-top:5px;
+    }
+    .posts .posttitle h2{
+        width:80%;
+        word-break: keep-all;
+    }
+}
+@media screen and (max-width: 650px){
+    .posts .postpicture{
+        width:70%;
+        height:70%;
+        margin-top:10px;
+    }
+    .posts .postpicture img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: 760px){
+
+    #wrapper #abzarak #category{
+        width:100%;
+    }
+    #wrapper #abzarak #mag{
+        width:100%;
+        margin-right:0%;
+    }
+    .page .sharebox .boxed p{
+        display: none;
+    }
+    #wrapper #abzarak #teachers{
+        width:100%;
+        margin-top:2%;
+    }
+    #wrapper #abzarak #nikandroid{
+        width:100%;
+        margin-top:2%;
+        margin-right:0%;
+    }
+
+    #wrapper #abzarak #matlab{
+        width:100%;
+        margin-top:2%;
+    }
+    #wrapper #abzarak #source{
+        width:100%;
+        margin-top:2%;
+        margin-right:0%;
+    }
+    #wrapper #abzarak #order{
+        width:100%;
+        margin-top:2%;
+    }
+    #wrapper #abzarak #offer{
+        width:100%;
+        margin-top:2%;
+        margin-right:0%;
+    }
+    #wrapper #abzarak #rankbox ul{
+        width:94%;
+    }
+    #matlab .arrowbox{
+        position:absolute;
+        border-bottom:0px solid transparent;
+        left:3%;
+    }
+    .headcontent ul li h4{
+        width:80%;
+    }
+    .headcontent ul{
+        text-align: right;
+    }
+    #offer .offerlogo{
+        float:right;
+    }
+    #footer p{
+        display: none;
+    }
+}
+@media screen and (max-width: 1270px){
+    #footer #lastcomments{
+        clear: both;
+        display: inline-table;
+    }
+    #footer #links{
+        display: inline-table;
+    }
+    #footer #outrow{
+        clear: both;
+        display: inline-table;
+        /*margin-top:-250px;*/
+    }
+}
+@media screen and (max-width: 1400px){
+    #gotop{
+        display: none;
+    }
+}
+@media screen and (max-width: 753px){
+    #footer #links{
+        clear: both;
+        margin-top:-250px;
+    }
+    #footer #outrow{
+        width:90%;
+        clear: both;
+        display: inline-table;
+        /*margin-top:40px;*/
+    }
+    #footer{
+        padding-bottom:30px;
+    }
+}
+@media screen and (max-width: 770px){
+    #slideshow{
+        display: none;
+    }
+}
+@media screen and (max-width: 380px){
+    #notfound .logo{
+        width:250px;
+        height:120px;
+        background-size:cover;
+    }
+}

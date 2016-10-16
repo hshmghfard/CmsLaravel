@@ -5,6 +5,7 @@ use App\lib\Jdf;
 use App\TblComment;
 use App\TblPost;
 use App\User;
+use App\TblCategory;
 use App\FavoritsModel;
 use Session;
 
@@ -237,6 +238,12 @@ class CommentShow{
                     echo '<td style="color:#ffffff;background-color:green"> تایید </td>'; 
                   }
                   
+                }
+
+                elseif($array2[$i]=='category_replayid')
+                {
+                    $category=TblCategory::find($model->category_replayid);
+                    echo '<td>'.$category['category_name'].'</td>'; 
                 }
 
                 else

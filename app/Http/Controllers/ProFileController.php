@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\User;
 use App\Http\Requests;
 
 class ProFileController extends Controller
@@ -61,7 +62,7 @@ class ProFileController extends Controller
     {
         //
     }
-
+ 
     /**
      * Display the specified resource.
      *
@@ -83,7 +84,7 @@ class ProFileController extends Controller
     {
         //
     }
-
+ 
     /**
      * Update the specified resource in storage.
      *
@@ -93,7 +94,26 @@ class ProFileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user=User::find($id);
+
+        if($request->has('password2'))
+        {
+            $user->password=bcrypt($request->password2);
+        }
+
+        if($request->hasfile('img2'))
+        {
+            $FileName=time().'.'.$request->file('img2')->getClientOriginalExtension();
+
+            $user->img=$FileName;
+            $request->file('img2')->move('resources/img/',$FileName);
+
+        }
+
+        if( $user->update( $request->all() ) )
+        {
+            return redirect('/user/panel/editprofile');
+        }
     }
 
     /**
@@ -105,5 +125,13 @@ class ProFileController extends Controller
     public function destroy($id)
     {
         //
+    }
+ 
+
+    public function editprofile()
+    { 
+        $id = Auth::user()->id;
+        $model=User::find($id);
+        return View('user.editprofile',['model'=>$model]);
     }
 }

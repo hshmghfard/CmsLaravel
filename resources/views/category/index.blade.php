@@ -9,10 +9,10 @@
 
 
 <?php
-	use App\lib\GridView;
+	use App\lib\CommentShow;
 	$array1=array('ردیف','نام دسته','نام لاتین','دسته','عملیات');
 	$array2=array('-','category_name','category_enname','category_replayid');
-	$GridView=GridView::view($array1,$array2,$model,$page,$total,$ntable='category');
+	$GridView=CommentShow::view($array1,$array2,$model,$page,$total,$ntable='category');
 ?>
 
 {!! $model->render() !!}

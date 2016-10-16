@@ -12,7 +12,9 @@
 		"artisaninweb/laravel-soap": "0.2.*",
         "nesbot/carbon": "^1.21",
         "laravel/socialite": "^2.0",
-        "hybridauth/hybridauth":"dev-master"
+        "hybridauth/hybridauth":"dev-master",
+        "zarinpal/zarinpal": "^1.1",
+        "larabook/gateway": "^2.9"
 
     },
     "require-dev": {

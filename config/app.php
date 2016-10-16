@@ -152,6 +152,8 @@ return [
 
 
 		Laravel\Socialite\SocialiteServiceProvider::class,
+        Zarinpal\Laravel\ZarinpalServiceProvider::class,
+        Larabookir\Gateway\GatewayServiceProvider::class,
 
 
         /*
@@ -214,6 +216,7 @@ return [
 
 		'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'SoapWrapper' => Artisaninweb\SoapWrapper\Facades\SoapWrapper::class,
+        'Gateway' => \Larabookir\Gateway\Gateway::class,
 
     ],
 

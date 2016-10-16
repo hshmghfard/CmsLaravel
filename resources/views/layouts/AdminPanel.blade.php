@@ -3,9 +3,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Mosaddek">
-    <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
     <link rel="shortcut icon" href="<?= asset('resources/img/favicon.html'); ?>">
     <title>پنل مدیریتی وب سایت دانشجویان کامپیوتر</title>
     <link href="<?= asset('resources/css/bootstrap.min.css'); ?>" rel="stylesheet">
@@ -14,6 +11,7 @@
     <link href="<?= asset('resources/css/style.css'); ?>" rel="stylesheet">
     <link href="<?= asset('resources/css/style-responsive.css'); ?>" rel="stylesheet" />
     <link href="<?= asset('resources/css/admin.css'); ?>" rel="stylesheet" />
+    @yield('head')
 </head>
 <body>
 <section id="container" class="">
@@ -23,7 +21,7 @@
             <div data-original-title="Toggle Navigation" data-placement="right" class="icon-reorder tooltips"></div>
         </div>
         <!--logo start-->
-        <a href="#" class="logo">فلت<span>لب</span></a>
+        <a href="#" class="logo">پنل <span>مدیر</span></a>
         <!--logo end-->
         <div class="nav notify-row" id="top_menu">
             <!--  notification start -->
@@ -61,13 +59,13 @@
                 <li id="header_notification_bar" class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 
-                        <i class="icon-bell-alt"></i>
-                        <span class="badge bg-warning">{!! get_countcomment() !!}</span>
+                        <i class="icon-envelope-alt"></i>
+                        <span class="badge bg-important">{!! get_countcomment() !!}</span>
                     </a>
                     <ul class="dropdown-menu extended notification">
-                        <div class="notify-arrow notify-arrow-yellow"></div>
+                        <div class="notify-arrow notify-arrow-red"></div>
                         <li>
-                            <p class="yellow">شما {!! get_countcomment() !!} دیدگاه جدید تایید نشده دارید</p>
+                            <p class="red">شما {!! get_countcomment() !!} دیدگاه جدید تایید نشده دارید</p>
                         </li>
                         
                         
@@ -100,12 +98,12 @@
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 
                         <i class="icon-bell-alt"></i>
-                        <span class="badge bg-warning">{!! get_countquestions() !!}</span>
+                        <span class="badge bg-success">{!! get_countquestions() !!}</span>
                     </a>
                     <ul class="dropdown-menu extended notification">
-                        <div class="notify-arrow notify-arrow-yellow"></div>
+                        <div class="notify-arrow notify-arrow-green"></div>
                         <li>
-                            <p class="yellow">شما {!! get_countquestions() !!} سوال جدید تایید نشده دارید</p>
+                            <p class="green">شما {!! get_countquestions() !!} سوال جدید تایید نشده دارید</p>
                         </li>
                         
                         
@@ -181,7 +179,7 @@
             <!--search & user info start-->
             <ul class="nav pull-right top-menu">
                 <li>
-                    <input type="text" class="form-control search" placeholder="Search">
+                    <input type="text" class="form-control search" placeholder="جست و جو">
                 </li>
                 <!-- user login dropdown start-->
 
@@ -222,9 +220,9 @@
                     </a>
                     <ul class="dropdown-menu extended logout">
                         <div class="log-arrow-up"></div>
-                        <li><a href="#"><i class=" icon-suitcase"></i>پروفایل</a></li>
-                        <li><a href="#"><i class="icon-cog"></i> تنظیمات</a></li>
-                        <li><a href="#"><i class="icon-bell-alt"></i> اعلام ها</a></li>
+                        <li><a href="<?= url('/admin/show/profile'); ?>"><i class=" icon-suitcase"></i>پروفایل</a></li>
+                        <!-- <li><a href="#"><i class="icon-cog"></i> تنظیمات</a></li> -->
+                        <!-- <li><a href="#"><i class="icon-bell-alt"></i> اعلام ها</a></li> -->
                         <li><a href="<?= url('/logout'); ?>"><i class="icon-key"></i> خروج</a></li>
                     </ul>
                 </li>
@@ -397,7 +395,55 @@
     <section id="main-content">
         <section class="wrapper">
             <!--state overview start-->
-            
+            <div class="row state-overview">
+                  <div class="col-lg-3 col-sm-6">
+                      <section class="panel">
+                          <div class="symbol terques">
+                              <i class="icon-user"></i>
+                          </div>
+                          <div class="value">
+                              <h1>{!! get_countusers() !!}</h1>
+                              <p>تعداد کاربران </p>
+                          </div>
+                      </section>
+                  </div>
+                  <div class="col-lg-3 col-sm-6">
+                      <section class="panel">
+                          <div class="symbol red">
+                              <i class="icon-tags"></i>
+                          </div>
+                          <div class="value">
+                              <h1>{!! get_counttags(); !!}</h1>
+                              <p>تعداد برچسب های سایت</p>
+                          </div>
+                      </section>
+                  </div>
+                  <div class="col-lg-3 col-sm-6">
+                      <section class="panel">
+                          <div class="symbol yellow">
+                              <i class="icon-shopping-cart"></i>
+                          </div>
+                          <div class="value">
+                              <h1>{!! get_countposti_buy(); !!}</h1>
+                              <p>تعداد سفارشات جدید</p>
+                          </div>
+                      </section>
+                  </div>
+                  <div class="col-lg-3 col-sm-6">
+                      <section class="panel">
+                          <div class="symbol blue">
+                              <i class="icon-bar-chart"></i>
+                          </div>
+                          <div class="value">
+                              <h1>{!! get_countcomment2(); !!}</h1>
+                              <p>تعداد دیدگاه ها</p>
+                          </div>
+                      </section>
+                  </div>
+              </div>
+
+
+
 
             <div class="row">
                 <div class="panel panel-default panhashem">
@@ -441,8 +487,20 @@ use App\FavoritsModel;
 use App\TblRequestLearning;
 use App\CallModel;
 use App\TblBuyPost;
+use App\TagsModel;
+use App\User;
 
+function get_countusers()
+{
+    $countco=User::count();
+    return $countco;
+}
 
+function get_counttags()
+{
+    $countco=TagsModel::count();
+    return $countco;
+}
 function get_countcall()
 {
     $call=CallModel::where('call_state','0')->count();
@@ -452,6 +510,12 @@ function get_countcall()
 function get_countcomment()
 {
     $countco=TblComment::where('comment_state','0')->count();
+    return $countco;
+}
+
+function get_countcomment2()
+{
+    $countco=TblComment::count();
     return $countco;
 }
 

@@ -17,7 +17,7 @@
 	<div class="menu">
     <a href="/" class="logo"></a>
     </div>
-	<div class="nav">
+	<div class="nav"> 
     	<ul>
         	<li class="active">
             	<div class="fix">
@@ -32,8 +32,8 @@
                 </div>
                 <ul>
                 	<li><a href="<?= url('user/panel/profile'); ?>">نمایش مشخصات</a></li>
-                    <li><a href="/"> ویرایش مشخصات </a></li>
-                    <li><a href="/">تغییر رمز ورود</a></li>
+                    <li><a href="<?= Url('user/panel/editprofile'); ?>"> ویرایش مشخصات </a></li>
+                    <li><a href="<?= Url('user/panel/editprofile'); ?>">تغییر رمز ورود</a></li>
                     <li><a href="<?= url('user/panel/favorits'); ?>">انتخاب علاقه مندی ها</a></li>
                     <li><a href="<?= url('/logout'); ?>">خروج</a></li>
                 </ul>
@@ -67,56 +67,6 @@
     <div class="content">
     
     
-    <!-- <ul data-collapse="collapse" class="quick">
-        <li>
-            <a href="#">
-                <img alt="" src="<?= asset('resources/image/imguser/statistics.png'); ?>">
-                <span>وضعیت کلی</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <img alt="" src="<?= asset('resources/image/imguser/order-149.png'); ?>">
-                <span>لیست فعالیت ها</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <img alt="" src="<?= asset('resources/image/imguser/shipping.png'); ?>">
-                <span>مرسوله ها</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <img alt="" src="<?= asset('resources/image/imguser/my-account.png'); ?>">
-                <span>مدیریت حساب</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <img alt="" src="<?= asset('resources/image/imguser/full-time.png'); ?>">
-                <span>تنظیمات زمان</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <img alt="" src="<?= asset('resources/image/imguser/date.png'); ?>">
-                <span>رخداد ها</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <img alt="" src="<?= asset('resources/image/imguser/lock.png'); ?>">
-                <span>تنظیمات امنیتی</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <img alt="" src="<?= asset('resources/image/imguser/refresh.png'); ?>">
-                <span>خالی کردن کش</span>
-            </a>
-        </li>
-    </ul> -->
     
 	
     @yield('content')

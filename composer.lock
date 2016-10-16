@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "56a11363c7e62a7260e4a1264239ddcc",
-    "content-hash": "f3a0b6aa464986a04f9a0afa25290ebe",
+    "hash": "bb71924d21ce2dd2479dc5149f1b728b",
+    "content-hash": "a61a2d8f29fa63d2e664243a2f20025d",
     "packages": [
         {
             "name": "artisaninweb/laravel-soap",
@@ -663,6 +663,69 @@
                 "tokenizer"
             ],
             "time": "2015-12-05 17:17:57"
+        },
+        {
+            "name": "larabook/gateway",
+            "version": "2.9.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/larabook/gateway.git",
+                "reference": "259fb2f0f0d16c467b2f3df7493fcc1cfc09450d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/larabook/gateway/zipball/259fb2f0f0d16c467b2f3df7493fcc1cfc09450d",
+                "reference": "259fb2f0f0d16c467b2f3df7493fcc1cfc09450d",
+                "shasum": ""
+            },
+            "require": {
+                "nesbot/carbon": "~1.20"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Larabookir\\Gateway\\": "src/",
+                    "Larabookir\\Gateway\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Hamed Pakdaman",
+                    "email": "pakdaman.it@gmail.com"
+                }
+            ],
+            "description": "A Laravel package for connecting to all Iraninan payments gateways",
+            "homepage": "https://github.com/larabook/gateway",
+            "keywords": [
+                "Bank",
+                "Meli",
+                "Payline",
+                "dargah",
+                "gateway",
+                "ipay",
+                "iran",
+                "iranian-banks",
+                "jahanpay",
+                "laravel",
+                "mellat",
+                "pardakht",
+                "parsian",
+                "pasargad",
+                "pay",
+                "payment",
+                "persian-banks",
+                "poolport",
+                "port",
+                "sadad",
+                "saman",
+                "shaparak",
+                "zarinpal"
+            ],
+            "time": "2016-08-05 07:13:13"
         },
         {
             "name": "laravel/framework",
@@ -2356,6 +2419,49 @@
                 "environment"
             ],
             "time": "2016-06-14 14:14:52"
+        },
+        {
+            "name": "zarinpal/zarinpal",
+            "version": "v1.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RTLer/zarinpal-composer-library.git",
+                "reference": "5de49bbc07a64af87bb6b3c7d70e0480d2a70c21"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RTLer/zarinpal-composer-library/zipball/5de49bbc07a64af87bb6b3c7d70e0480d2a70c21",
+                "reference": "5de49bbc07a64af87bb6b3c7d70e0480d2a70c21",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "5.3.*",
+                "satooshi/php-coveralls": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/Drivers/lib/nusoap.php"
+                ],
+                "psr-4": {
+                    "Zarinpal\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL2"
+            ],
+            "authors": [
+                {
+                    "name": "hooman naghiee",
+                    "email": "hooman@zarinpal.com"
+                }
+            ],
+            "description": "transaction request system for zarinpal",
+            "time": "2016-06-26 07:18:27"
         }
     ],
     "packages-dev": [

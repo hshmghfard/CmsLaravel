@@ -1,0 +1,225 @@
+/*
+    Copyright 2015
+    Graphic Design : iVahid.com
+    Programming : Reza Dalir At www.Designic.ir
+    All Right Reserved
+*/
+.minslider{
+    width:auto;
+    height:auto;
+    transition:0ms;
+    -webkit-transition:0ms;
+    -moz-transition:0ms;
+    -o-transition:0ms;
+}
+.minslider a{
+    text-decoration: none;
+    transition:0ms;
+    -webkit-transition:0ms;
+    -moz-transition:0ms;
+    -o-transition:0ms;
+}
+.minslider .slides_box{
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+    position: absolute;
+    transition:0ms;
+    -webkit-transition:0ms;
+    -moz-transition:0ms;
+    -o-transition:0ms;
+}
+.arrowbox{
+    margin-right:-49px;
+    width:44px;
+    height:71px;
+    border-radius:3px;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    -o-border-radius:3px;
+    -ms-border-radius:3px;
+    -m-border-radius:3px;
+    background-color:#ffffff;
+    border-bottom:2px solid #d6d6d6;
+    position: absolute;
+}
+.sells .minslider .title_thumb_box .thumb_box span .thumb_n{
+    float:right;
+    margin-right:-10px;
+    margin-top:13px;
+}
+.sells .minslider .title_thumb_box .thumb_box span .thumb_p{
+    float:right;
+    margin-right:15px;
+    margin-top:40px;
+}
+#lastcomments .title_thumb_box{
+    float:right;
+    margin-top:300px;
+}
+.minslider .title_thumb_box .thumb_box span img{
+    cursor: pointer;
+}
+.minslider img{
+    padding: 0px;
+    margin: 0px;
+    border: none;
+}
+.minslider ul{
+    padding: 0px; transition:0ms;
+    -webkit-transition:0ms;
+    -moz-transition:0ms;
+    -o-transition:0ms;
+    margin: 0px;
+    position: absolute;
+    list-style: none;
+}
+.minslider ul li{
+    padding: 0px; transition:0ms;
+    -webkit-transition:0ms;
+    -moz-transition:0ms;
+    -o-transition:0ms;
+    margin: 0px;
+    float: left;
+}
+.minslider ul li a{
+    display: block; transition:0ms;
+    -webkit-transition:0ms;
+    -moz-transition:0ms;
+    -o-transition:0ms;
+}
+
+#lastcomments  .minslider .title_thumb_box .thumb_box span .thumb_p{
+    position: absolute;
+    margin-right:250px;
+    margin-top:-30px;
+}
+#lastcomments  .minslider .title_thumb_box .thumb_box span .thumb_n{
+    position: absolute;
+    margin-right:5px;
+    margin-top:-30px;
+}
+#lastcomments  .minslider .title_thumb_box .thumb_box{
+    background-color:transparent !important;
+    margin-right:0px;
+    width:0px;
+    height:283px;
+    border-radius:0px;
+    -webkit-border-radius:0px;
+    -moz-border-radius:0px;
+    -o-border-radius:0px;
+    -ms-border-radius:0px;
+    -m-border-radius:0px;
+} 
+
+.slidorion {
+    width:100%;
+    height:100%;
+    transition: 0ms;
+    -webkit-transition: 0ms;
+    -moz-transition: 0ms;
+    -o-transition: 0ms;
+}
+
+.slider {
+    width:100%;
+    height:91.5%;
+    position: relative;
+	float: left;
+	overflow: hidden;
+    transition: 0ms;
+    -webkit-transition: 0ms;
+    -moz-transition: 0ms;
+    -o-transition: 0ms;		/* Hides the animations */
+}
+.slider img{
+    width:100%;
+    height:auto;
+}
+.slider .slide {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+    transition: 0ms;
+    -webkit-transition: 0ms;
+    -moz-transition: 0ms;
+    -o-transition: 0ms;
+}
+
+.accordion {
+	width: 100%;
+	position: relative;
+	z-index:999;
+	float: left;
+    transition: 0ms;
+    -webkit-transition: 0ms;
+    -moz-transition: 0ms;
+    -o-transition: 0ms;
+    margin-top:-25px;
+}
+
+.accordion .header {
+	padding: 18.5px 22.9px;
+	background: #ffffff;
+    display: inline-block;
+    float: right;
+    transition: 0ms;
+    -webkit-transition: 0ms;
+    -moz-transition: 0ms;
+    -o-transition: 0ms;
+    font-size:12px;
+    color:#4c4c4c;
+    border-bottom:2px solid #d6d6d6;
+    border-left:1px solid #e0e0e0;
+}
+.accordion .header:hover {
+	background: #e8e8e8;
+	cursor: pointer;
+}
+
+.accordion .header.active {
+	border-bottom: none;
+	background: #e8e8e8 !important;
+    border-bottom:2px solid #a3a3a3;
+}
+.accordion .noborder{
+    border-left:0px solid transparent;
+}
+.accordion .content {
+	height: 0px;			/* This height needs to be changed as it depends on the accordion height and number of tabs */
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 20px;
+	margin: 0;
+	border: none;
+	background: #d6d6d6;
+    transition: 0ms;
+    -webkit-transition: 0ms;
+    -moz-transition: 0ms;
+    -o-transition: 0ms;
+}
+
+.accordion .content p {
+	margin-bottom: 10px;
+}
+
+.slidorion .slidorion-nav {
+    position: absolute;
+    top: 200px;
+    width: 16px;
+    height: 27px;
+    z-index: 9999;
+    background: url('../img/arrows.png') 0 0 no-repeat;
+    cursor: pointer;
+}
+
+.slidorion .slidorion-nav-left {
+	left: 30px;
+}
+
+.slidorion .slidorion-nav-right {
+	right: 310px;
+	background-position: -16px 0;
+}

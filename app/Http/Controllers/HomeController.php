@@ -40,6 +40,12 @@ class HomeController extends Controller
          } 
     }
 
+
+    public function danesh()
+    {
+        return View('themes.danesh.index');
+    }
+
     // public function show($title)
     // {
     //     $Product=TblPost::where('post_url',$title)->first();

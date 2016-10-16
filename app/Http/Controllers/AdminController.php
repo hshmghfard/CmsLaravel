@@ -18,21 +18,25 @@ class AdminController extends Controller
     public function __construct()
     {
 
-        if ( Auth::check() )
-        {
-            $roule = Auth::user()->roule;
-            $state = Auth::user()->state;
+        if ( $this->middleware('auth') ) {
 
-            if( $roule != '1'){
-                return redirect('/user/panel')->send();   
+            if ( Auth::check() )
+            {
+                $roule = Auth::user()->roule;
+                $state = Auth::user()->state;
+
+                if( $roule != '1'){
+                    return redirect('/user/panel')->send();   
+                }
             }
-        }
-        else{
+            else{
 
-            return redirect('login')->send();
+                return redirect('login')->send();
 
+            }
+            
         }
-          // $this->middleware('auth'); 
+        
     }
 
 
@@ -70,7 +74,7 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $post = new Post($request -> all());
-        $post -> url = str_replace(' ','-', $post -> title);
+        $post ->url = str_replace(' ','-', $post ->title);
 
         if( $request -> hasFile('img') ){
             $FileName = time().'.'.$request->file('img')->getClientOriginalExtension();
@@ -128,5 +132,10 @@ class AdminController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function profile()
+    {
+        return View('admin.profile.show');
     }
 }

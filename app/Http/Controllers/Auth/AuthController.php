@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use Socialite;
 use Validator;
+use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -73,18 +74,37 @@ class AuthController extends Controller
 
 
 
-//    public function redirectToProvider(){
-//        return Socialite::driver('GitHub')->redirect();
-//    }
-//
-//
-//    public function handleProviderCallback(){
-//        $user = Socialite::driver('github')->user();
-//
-//        var_dump($user);
-//    }
+   public function redirectToProvider(){
+       return Socialite::driver('GitHub')->redirect();
+   }
 
 
+   public function handleProviderCallback(){
+       $user = $this->FindOrCreateGitHub(
+            Socialite::driver('github')->user()
+       );
+       auth()->login($user);
+       return redirect('/');
+   }
+
+   protected function FindOrCreateGitHub( $githubuser )
+   {
+        $user = User::firstOrNew([
+            'id_github' => $githubuser->id
+        ]);
+
+        if ( $user->exists ) return $user;
+
+        $user->fill([
+            'name' => $githubuser->nickname,
+            'email' => $githubuser->email,
+            'avatar' => $githubuser->avatar,
+            'state' => '0',
+            'roule' => '0', 
+        ])->save();
+
+        return $user;
+   }
    //  public function redirectToGoogle(){
    //     return Socialite::driver('google')->redirect();
    //  }
